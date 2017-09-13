@@ -1,0 +1,100 @@
+// import reset css
+@import "elements/reset";
+
+// import fonts
+@import "elements/fonts";
+
+// variables
+$blue: #009cff;
+
+// mixins
+@mixin back{
+	&:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		background-color: #000;
+		opacity: 0;
+		transition: 0.3s all;
+	}	
+}
+@mixin transition {
+	transition: 0.3s all ease;	
+}
+
+body {
+	font-size: 18px;
+	font-family: CYPro;
+	font-weight: normal;
+	speak: none;
+	display: flex;
+	min-height: 100vh;
+	width: 100vw;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	overflow-x: hidden;
+}
+
+// animate background webgl stylesheet
+.bgCanvas, .contact-us__background {
+	div {
+		width: 100vw !important;
+	}
+	canvas {
+		width: 100vw !important;
+	}
+}
+
+// import site elements
+@import "elements/menu";
+@import "elements/preloader";
+@import "elements/hello_section";
+@import "elements/keyframes";
+@import "elements/media";
+@import "elements/__page-item/page-item";
+@import "elements/__contact-us/contact-us";
+
+// main structure stylesheet
+.wrapper {
+	z-index: 1;
+    width: 100vw;
+    position: relative;	
+	@include back;	
+		&:before {			
+			background-color: #fff;
+			width: 100vw;
+			z-index: -2;
+		}	
+	&.opacity {
+		
+		&:before {			
+			
+			transition: 1s;
+			opacity: .4;
+			z-index: 1;
+		}		
+	}    
+}
+
+
+footer {
+	height: 200px;
+	width: 100%;
+}
+
+
+
+
+// блоки	
+.test {
+	// background-color: #7db3ff;
+}
+
+
+
+
+
