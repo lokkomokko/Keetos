@@ -4,40 +4,11 @@
 // import fonts
 @import "elements/fonts";
 
-// variables
-$blue: #009cff;
+// import settings
+@import "elements/settings";
 
-// mixins
-@mixin back{
-	&:before {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		top: 0;
-		background-color: #000;
-		opacity: 0;
-		transition: 0.3s all;
-	}	
-}
-@mixin transition {
-	transition: 0.3s all ease;	
-}
 
-body {
-	font-size: 18px;
-	font-family: CYPro;
-	font-weight: normal;
-	speak: none;
-	display: flex;
-	min-height: 100vh;
-	width: 100vw;
-	position: relative;
-	-webkit-font-smoothing: antialiased;
-	position: relative;
-	overflow-x: hidden;
-}
+
 
 // animate background webgl stylesheet
 .bgCanvas, .contact-us__background {
@@ -58,6 +29,23 @@ body {
 @import "elements/__page-item/page-item";
 @import "elements/__contact-us/contact-us";
 
+
+html {
+	font-size: 15px;
+}
+body {
+	font-family: CYPro;
+	font-weight: normal;
+	speak: none;
+	display: flex;
+	min-height: 100vh;
+	width: 100vw;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	position: relative;
+	overflow-x: hidden;
+}
+
 // main structure stylesheet
 .wrapper {
 	z-index: 1;
@@ -75,26 +63,37 @@ body {
 			
 			transition: 1s;
 			opacity: .4;
-			z-index: 1;
+			z-index: 20;
 		}		
 	}    
 }
 
 
-footer {
-	height: 200px;
-	width: 100%;
+.arrow-up {
+	transform: rotate(269deg);
+	cursor: pointer;
+	position: fixed;
+	bottom: 60px;
+	right: 60px;
+	z-index: 10;
+	opacity: 0;
+	transition: 0.3s;
+	&--show {
+		opacity: 1;
+	}
+	&__text {
+		font-size: 14px;
+		color: $gray;
+		display: inline-block;
+		transform: rotate(180deg) ;
+	}
+	&__svg {
+		svg {
+			transform: rotate(90deg) translate(6.5px,-16px);
+			width: 7px;
+			height: 21px;			
+		}		
+	}
 }
-
-
-
-
-// блоки	
-.test {
-	// background-color: #7db3ff;
-}
-
-
-
 
 

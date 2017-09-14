@@ -15,22 +15,27 @@
 		padding-left: 3.75rem;
 		transition: .4s;
 		@include back;
+		&:before {
+			opacity: .2;
+			z-index: 3;
+
+		}
 		&:hover {
 			&:before {
-				opacity: .2;
-				z-index: 3;
+				opacity: .3;
 			}
 		}
 		&__desc {
 			position: relative;
 			z-index: 10;
 			margin-top: auto;
+			font-size: 0.866667rem;
 		}
 	}
 	h2 {
 		font-family: GilroyBold;
-		font-size: 2.4375rem;
-		margin-bottom: 0.9375rem;
+		font-size: 1.86667rem;
+		margin-bottom: 0.7rem;
 	}
 	img {
 		position: absolute;

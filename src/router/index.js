@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import root from '../App.vue'
 import mainTemplate from '@/components/main'
-import checkPage from '@/components/checkPage'
+import design from '@/components/design'
 import checkPage2 from '@/components/checkPage2'
 
 
@@ -19,10 +19,10 @@ export default new Router({
       }
     },
     {
-      path: '/page',
-      name: 'checkPage',
+      path: '/design',
+      name: 'design',
       components: {
-        default: checkPage,
+        default: design,
       }
     },
     {

@@ -1,0 +1,138 @@
+<template>
+  <footer class="footer">
+    <div class="footer__left-side">
+      <div class="footer__left-wrap">
+        <nav class="footer__nav">
+              <a class="footer__nav-item" href="">
+                <img :src="part_logo" alt="logo">
+              </a>
+            <a class="footer__nav-item" href="">About</a>
+            <a class="footer__nav-item" href="">Design</a>
+            <a class="footer__nav-item" href="">Website</a>
+            <a class="footer__nav-item" href="">Branding</a>
+          </ul>
+        </nav>
+        <p class="footer__copyright">
+          Все права защищены © 2017.
+        </p>        
+      </div> 
+    </div>
+    <div class="footer__right-side">
+      <div class="footer__social">
+        <a href="" class="footer__social-item"><span v-html="vk"></span></a>
+        <a href="" class="footer__social-item"><span v-html="fb"></span></a>
+        <a href="" class="footer__social-item"><span v-html="inst"></span></a>
+        <a href="" class="footer__social-item"><span v-html="be"></span></a>
+      </div>
+    </div>
+    
+  </footer>
+  </div>
+
+
+</template>
+
+
+<script>
+
+
+import render_svg from '../assets/js/render_svg.js'
+
+import part_logo from '../assets/img/logo-part.png'
+import vk from '../assets/img/004-vk-social-network-logo.svg'
+import fb from '../assets/img/005-facebook-logo.svg'
+import inst from '../assets/img/001-instagram-logo.svg'
+import be from '../assets/img/003-behance-logo.svg'
+
+
+
+
+export default {
+  name: 'footer_block',
+  data () {
+    return {
+      vk: render_svg(vk),
+      fb: render_svg(fb),
+      inst: render_svg(inst),
+      be: render_svg(be),
+      part_logo
+    }
+  },
+
+}
+
+</script>
+
+<style lang="scss">
+
+  @import "../assets/css/elements/settings.scss";
+
+  .footer {
+    color: $gray;
+    display: flex;
+    height: 12.8rem;
+
+    &__left-side, &__right-side  {
+      flex-basis: 50%;
+      display: flex;
+      align-items: center;
+      
+    }
+    &__left-side {
+      justify-content: center;
+      flex-direction: column;
+      text-align: left;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding-left: 7rem;      
+    } 
+    &__right-side {
+      justify-content: flex-start;
+      box-sizing: border-box;
+      padding-left: 60px;
+    }
+
+    &__social-item {
+      margin-right: 16px;
+      display: flex;
+      &:hover {
+        svg {
+          fill: $grayHover;
+        }
+      }      
+      span {
+      }
+      svg {
+        width: 20px;
+        fill: $gray;
+      } 
+    }
+    &__social {
+        display: flex;      
+        height: 72px;
+    }
+    &__nav {
+      display: flex;
+      margin-bottom: 2.66667rem;
+    }
+    &__nav-item {
+      display: block;
+      margin-right: 2.6rem;      
+      font-family: GilroyBold;
+      font-size: 1rem;
+      text-decoration: underline;
+      &:hover {
+        color: $grayHover;
+        &:first-of-type {
+          opacity: 0.5;
+        }        
+      }
+      
+    }
+    &__copyright {
+      font-size: 0.8rem;
+    }
+
+  }
+
+</style>
