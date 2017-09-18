@@ -6,7 +6,9 @@
       <transition>
         <router-view></router-view>
       </transition>	
-      <div class="arrow-up">
+      <div class="arrow-up" v-scroll-to="{
+        el: '.wrapper',
+           duration: 1000}">
         <span class="arrow-up__text">вверх</span>
         <span class="arrow-up__svg" v-html="arrow_up"></span>
       </div>
@@ -35,17 +37,12 @@ export default {
   },
   mounted: function() {
 
-    // scroll btn up
-    $(".arrow-up").click(function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 700);
-    });
 
     // hide\show scroll btn up
     $(window).scroll(function() {
+       var top_scroll = $('.hello_section').height() == undefined ? $('.project-top').height() : $('.hello_section').height()   
 
-      if ($(window).scrollTop() >= $('.hello_section').height()) {
+      if ($(window).scrollTop() >= top_scroll ) {
         $('.arrow-up').hasClass('arrow-up--show') ? true : $('.arrow-up').addClass('arrow-up--show') 
 
       }
@@ -55,13 +52,7 @@ export default {
 
     })
 
-    // paralax on webgl
-    // window.onscroll = function(e) {
-    //     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    //     $('.big-image img').css({
-    //         'transform': 'translateY(' + scrolled * 0.3 + 'px)'
-    //     })
-    // }    
+ 
   },
 
   components: {

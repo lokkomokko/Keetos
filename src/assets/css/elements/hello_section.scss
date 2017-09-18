@@ -2,7 +2,7 @@
 		height: 100vh;
 		position: relative;
 		box-sizing: border-box;
-		margin: 0 5em;
+		margin: 0 4rem;
 		display: flex;
 		overflow: hidden;
 		&--page-item {
@@ -31,34 +31,51 @@
 				}
 			}			
 		}
-		.bottom_section {
-			color: #fff;
-			display: flex;
-			font-size: 0.866667rem;
-			justify-content: space-between;
-			width: 100%;
-			margin-top: auto;
-			margin-bottom: 4.4em;
-			position: relative;
-		    z-index: 1;
-			.lang {
-				font-family: GilroyBold;
-				font-size: 1rem;		
-			}
-			.scroll {
-				position: absolute;
-				left: calc(50% - 11px);
-				top: -5px;
-				cursor: pointer;
-				animation: animate_scroll 2s infinite;
-				transition: .3s all;
-				&:hover {
-					-webkit-animation-play-state: paused;
-					-moz-animation-play-state: paused;
-					-o-animation-play-state: paused;
-					animation-play-state: paused;
-					opacity: .7;
-				}
-			}
-		}
+
 	}	
+
+.bottom_section {
+	color: #fff;
+	display: flex;
+	font-size: 0.866667rem;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: auto;
+	margin-bottom: 4.4em;
+	position: relative;
+    z-index: 1;
+    .desc {
+    	&--link  {
+    		text-decoration: underline;
+    	}
+    }
+    &--project {
+    	position: absolute;
+    	bottom: 0;
+    	right: 4rem;
+    	left: 4rem;
+    	width: auto;
+    }
+	.lang {
+		font-family: GilroyBold;
+		font-size: 1rem;		
+	}
+	.scroll {
+		position: absolute;
+		left: calc(50% - 7px);
+		top: -5px;
+		cursor: pointer;
+		animation: animate_scroll 2s infinite;
+		transition: .3s all;
+		img {
+			width: 14px;
+		}
+		&:hover {
+			-webkit-animation-play-state: paused;
+			-moz-animation-play-state: paused;
+			-o-animation-play-state: paused;
+			animation-play-state: paused;
+			opacity: .7;
+		}
+	}
+}	

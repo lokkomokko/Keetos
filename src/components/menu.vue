@@ -16,8 +16,8 @@
 				<ul>
 					<li class="menu_link"><router-link to="/">About</router-link></li>
 					<li class="menu_link"><router-link to="/design">Design</router-link></li>
-					<li class="menu_link"><a href="">Website</a></li>
-					<li class="menu_link"><a href="">Branding</a></li>
+					<li class="menu_link"><router-link to="/website">Website</router-link>
+					<li class="menu_link"><router-link to="/project">Branding</router-link></li>
 
 				</ul>
 			</nav>
@@ -109,7 +109,7 @@ var menuScript = function() {
   .menu {
     .artclose {
       position: fixed;
-      left: 5em;
+      left: 4rem;
       top: 3.7rem;
       cursor: pointer;
       width: 50px;

@@ -6,7 +6,13 @@ require('./assets/js/common.js')
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueImg from 'v-img';
+var VueScrollTo = require('vue-scrollto');
+ 
+Vue.use(VueScrollTo)
 
+
+Vue.use(VueImg);
 
 
 Vue.config.productionTip = false

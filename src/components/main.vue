@@ -1,5 +1,6 @@
 <template>
   <div>
+	  <!-- <canvas_bg></canvas_bg>   -->
       <helloSection></helloSection>    
       <aboutSection></aboutSection>	
   </div>
@@ -9,6 +10,7 @@
 <script>
 import helloSection from './helloSection'
 import aboutSection from './aboutSection'
+import canvas_bg from './canvas'
 
 
 export default {
@@ -17,7 +19,8 @@ export default {
   components: {
     
     helloSection,
-    aboutSection
+    aboutSection,
+    canvas_bg
   }
 }
 

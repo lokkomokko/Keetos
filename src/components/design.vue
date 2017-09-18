@@ -1,6 +1,7 @@
 <template>
 
 		  <div>
+        <!-- <canvas_bg></canvas_bg> -->
         <!-- верхняя секция главная -->
         <div class="hello_section hello_section--page-item">
 
@@ -33,7 +34,7 @@
         <div class="g-items">
            <a href="" class="g-items__single item-block">
             <div class="item-block__elem">
-              <img src="../assets/img/1.png" alt="">
+              <img class="test" src="../assets/img/1.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Победа</h2>
                 <p>Российский авиаперелетчик</p>      
@@ -134,7 +135,7 @@
 
 <script>
 
-
+import canvas_bg from './canvas'
 
 export default {
   name: 'design',
@@ -151,6 +152,9 @@ export default {
         }, 700);
     }); 
   },  
+  components: {
+    canvas_bg
+  }
 
 }
 

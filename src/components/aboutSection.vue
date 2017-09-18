@@ -51,10 +51,16 @@
 	</main>	
 	
 	<div class="slides-block">
-		<div class="slides-block__item"><img src="../assets/img/ab2.png" alt=""></div>
-		<div class="slides-block__item"><img src="../assets/img/ab3.png" alt=""></div>
-		<div class="slides-block__item"><img src="../assets/img/ab4.png" alt=""></div>
-		<div class="slides-block__item"><img src="../assets/img/ab5.png" alt=""></div>
+		<div class="slides-block__left-side">
+			<div class="slides-block__item slides-block__item--wide"><img v-img:my-group src="../assets/img/s1.png" alt=""></div>
+			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab3.png" alt=""></div>
+			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab4.png" alt=""></div>
+		</div>
+		<div class="slides-block__right-side">
+			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab2.png" alt=""></div>
+			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab3.png" alt=""></div>
+			<div class="slides-block__item slides-block__item--wide"><img v-img:my-group src="../assets/img/3b8a603507428c1b7af4b80e981f75f9--photography-minimal-symmetry-photography.png" alt=""></div>			
+		</div>
 	</div>
 
 	<div class="big-text-section big-text-section--low">
@@ -91,86 +97,11 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 	@import "../assets/css/elements/settings.scss";
 
-	.big-text-section {
-		height: 100vh;
-		width: 100%;
-		position: relative;
-		box-sizing: border-box;
-		display: flex;
-		overflow: hidden;	
-		color: #666666;
-		&--low {
-			height: 21vmax;
-		}
-		&__left-side, &__right-side {
-			display: flex;
-			flex-basis: 50%;
-			align-items: center;
-		}	
-		&__left-side {
-			justify-content: center;
-		}
-		&__right-side {
-			justify-content: flex-start;
-		}
-		&__right-wrap {
-			width: 70%;
-			padding-left: 4rem;
-		}
-		&__right-wrap-services {
-		    margin: auto;			
-		}
-		&__title {
-			font-size: 4.8rem;
-			color: $blue;
-			margin-top: -3.06667rem;
-			font-family: GilroyBold;
-		}
-		&__desc {
-			margin-bottom: 1.53333rem;
-			font-family: GilroyBold;
-			line-height: 1.4rem;
-		}
-		&__link {
-			font-family: MinionPro;
-			font-size: 1rem;
-			text-decoration: underline;	
-			&--arrow {
-				display: flex;
-				margin: auto;
-			}
-		}
-		&__left-text {
-			width: 61%;
-			font-size: 0.866667rem;
-			line-height: 1.4rem;
-			margin-left: auto;
-			padding-right: 4rem;
-		}
-		&__right-title {
-			font-family: GilroyBold;
-			font-size: 1rem;
-			margin-bottom: 1.4rem;
-		}
-		&__right-services-name {
-			line-height: 1.4rem;
-			font-size: 0.866667rem;
-			&:before {
-				content:'-';
-				color: $blue;
-			}
-		}
-		&__link-arrow {
-			display: block;
-			width: 1.33333rem;
-			margin-right: 1.4rem;
 
-		}
-	}
 
 	.big-image {
 		width: 100%;
@@ -182,13 +113,32 @@ export default {
 	}
 
 	.slides-block {
-		height: 21vmax;
+		
 		width: 100%;
 		display: flex;
+		&__left-side, &__right-side {
+			flex-basis: 50%;
+			display: flex;
+			flex-wrap: wrap;	
+		}
 		&__item {
-			flex-basis: 25%;
+			height: 21vmax;
+			flex-basis: 50%;
+			cursor: pointer;
+			overflow: hidden;
+			&--wide {
+				flex-basis: 100%;		
+			}
+			&:hover {
+				img {
+					transform: scale(1);
+				}
+			}
 		}
 		img {
+			transform: scale(1.1);
+			transition: 0.7s;
+			will-change: transform;
 			@extend %img;
 			
 		}
