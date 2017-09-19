@@ -218,6 +218,11 @@ var menuScript = function() {
 height: 30px;
   width: 33px;
   cursor: pointer;
+  &--blue {
+    .burgx, .burgx2, .burgx3 {
+      background-color: $blue !important;
+    }
+  }
 }
 
 .burgx, .burgx2, .burgx3 {
@@ -226,6 +231,7 @@ height: 30px;
   width: 33px;
   height: 4px;
   position: absolute;
+  transition: 0.2s;
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg);
   -moz-transform: rotate(-180deg);

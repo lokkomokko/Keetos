@@ -30,7 +30,7 @@
           </div>
         </div>
 
-      <div class="web-wrap">
+      <div class="web-wrap w4">
 
         <div class="web-item">
           <a href="" class="web-item__text">
@@ -101,7 +101,6 @@ export default {
   mounted: function() {
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 
-      console.log(block_height)
         $('html, body').animate({
             scrollTop: block_height
         }, 700);
@@ -112,7 +111,6 @@ export default {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop;
         $('.web-item__image img').each(function() {
 
-          console.log( scrolled  - $(this).offset().top)
 
           if ($(this).offset().top <= scrolled) {
             $(this).css({

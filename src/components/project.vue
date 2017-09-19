@@ -24,7 +24,7 @@
 			</div>			
 		</div>
 
-		<div class="project-desc-section">
+		<div class="project-desc-section w5">
 			<div class="project-desc-section__row">
 					<p class="project-desc-section__name">
 						Задача:
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 
-		<div class="project-images-block">
+		<div class="project-images-block w6">
 			<div class="project-image-item project-image-item--small">
 
 				<div class="project-image-item__image">
@@ -155,7 +155,7 @@
 
 
 
-		<div class="project-images-block">
+		<div class="project-images-block w8">
 			<div class="project-image-item project-image-item--big">
 
 				<div class="project-image-item__image">

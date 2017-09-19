@@ -42,22 +42,22 @@
             </div>
            </a>
 
-           <a href="" class="g-items__single item-block">
-            <div class="item-block__elem">
+           <div class="g-items__single item-block">
+            <a href="1" class="item-block__elem">
               <img src="../assets/img/2.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Победа</h2>
                 <p>Российский авиаперелетчик</p>      
               </div>    
-            </div>
-            <div class="g-items__single item-block__elem">
+            </a>
+            <a href="2" class="item-block__elem">
               <img src="../assets/img/3.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Длинное название какого-то проекта</h2>
                 <p>Самое длинное описание проекта под длинным названием какого-то проекта</p>     
               </div>    
-            </div>  
-           </a> 
+            </a>  
+           </div> 
 
            <a href="" class="g-items__single item-block">
             <div class="item-block__elem">
@@ -79,22 +79,22 @@
             </div>
            </a> 
 
-           <a href="" class="g-items__single item-block">
-            <div class="item-block__elem">
+           <div href="" class="g-items__single item-block">
+            <a href="" class="item-block__elem">
               <img src="../assets/img/6.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Победа</h2>
                 <p>Российский авиаперелетчик</p>      
               </div>    
-            </div>
-            <div class="g-items__single item-block__elem">
+            </a>
+            <a href='' class="item-block__elem">
               <img src="../assets/img/7.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Победа</h2>
                 <p>Российский авиаперелетчик</p>      
               </div>    
-            </div>  
-           </a>   
+            </a>  
+           </div>   
 
 
            <a href="" class="g-items__single item-block">

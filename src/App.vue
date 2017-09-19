@@ -36,19 +36,62 @@ export default {
     }
   },
   mounted: function() {
+    const menu_icon = document.querySelector('.artclose');
 
 
-    // hide\show scroll btn up
+
+    var isInViewport = function (elem) {
+
+      if (elem === null) {
+        return false}
+      // for (const item of elem) {
+        var bounding = elem.getBoundingClientRect();
+
+        if (
+             
+         
+            bounding.bottom <= (bounding.height + 70) && bounding.bottom >= 70
+        ) {
+
+          return true;
+        } else {
+
+              return false;
+
+        }
+      // }
+
+    };
+
+
     $(window).scroll(function() {
+
+       const w1 = document.querySelector('.w1'), 
+        w2 = document.querySelector('.w2'),
+        w3 = document.querySelector('.w3'),
+        w4 = document.querySelector('.w4'), 
+        w5 = document.querySelector('.w5'),
+        w6 = document.querySelector('.w6'),
+        w8 = document.querySelector('.w8');
+
+      if ( isInViewport(w1) || isInViewport(w2) || isInViewport(w3) || isInViewport(w4) || isInViewport(w5) || isInViewport(w6) ||  isInViewport(w8)) {
+        menu_icon.classList.add('artclose--blue')
+      }
+      else {
+        menu_icon.classList.remove('artclose--blue')
+      }
+      // var scrolled = window.pageYOffset || document.documentElement.scrollTop;
        var top_scroll = $('.hello_section').height() == undefined ? $('.project-top').height() : $('.hello_section').height()   
 
       if ($(window).scrollTop() >= top_scroll ) {
         $('.arrow-up').hasClass('arrow-up--show') ? true : $('.arrow-up').addClass('arrow-up--show') 
 
       }
-      else {
+      else if ($(window).scrollTop() <= top_scroll ){
         $('.arrow-up').hasClass('arrow-up--show') ? $('.arrow-up').removeClass('arrow-up--show') : true 
       }
+
+
 
     })
 

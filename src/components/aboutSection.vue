@@ -1,6 +1,6 @@
 <template>
   <div>
-	<div class="big-text-section">
+	<div  class="big-text-section w1">
 		<div class="big-text-section__left-side">
 			<h2 class="big-text-section__title">Studio</h2>
 		</div>
@@ -20,7 +20,7 @@
 		<img src="../assets/img/ab1.png" alt="">
 	</div>
 
-	<main class="big-text-section">
+	<main class="big-text-section w2">
 		<div class="big-text-section__left-side">
 			<p class="big-text-section__left-text">
 				Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work. 
@@ -52,18 +52,18 @@
 	
 	<div class="slides-block">
 		<div class="slides-block__left-side">
-			<div class="slides-block__item slides-block__item--wide"><img v-img:my-group src="../assets/img/s1.png" alt=""></div>
-			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab3.png" alt=""></div>
-			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab4.png" alt=""></div>
+			<a href='' class="slides-block__item slides-block__item--wide"><img src="../assets/img/s1.png" alt=""></a>
+			<a href="" class="slides-block__item"><img src="../assets/img/ab3.png" alt=""></a>
+			<a href="" class="slides-block__item"><img src="../assets/img/ab4.png" alt=""></a>
 		</div>
 		<div class="slides-block__right-side">
-			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab2.png" alt=""></div>
-			<div class="slides-block__item"><img v-img:my-group src="../assets/img/ab3.png" alt=""></div>
-			<div class="slides-block__item slides-block__item--wide"><img v-img:my-group src="../assets/img/3b8a603507428c1b7af4b80e981f75f9--photography-minimal-symmetry-photography.png" alt=""></div>			
+			<a href='' class="slides-block__item"><img src="../assets/img/ab2.png" alt=""></a>
+			<a href='' class="slides-block__item"><img src="../assets/img/ab3.png" alt=""></a>
+			<a href='' class="slides-block__item slides-block__item--wide"><img src="../assets/img/3b8a603507428c1b7af4b80e981f75f9--photography-minimal-symmetry-photography.png" alt=""></a>			
 		</div>
 	</div>
 
-	<div class="big-text-section big-text-section--low">
+	<div class="big-text-section big-text-section--low w3">
 		<div class="big-text-section__left-side">
 			<p class="big-text-section__left-text">
 				What makes us different? We really love what we do, and enjoy the process of creating each project with a soul.				
