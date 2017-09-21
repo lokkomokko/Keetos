@@ -7,7 +7,7 @@
 			<p class="project-top__desc">
 				Российский авиаперевозчик и дешевые билеты  в Сочи
 			</p>
-			<router-link class="project-top__close" to="/">
+			<router-link class="project-top__close" to="/design">
 				<img :src="close_svg" alt="close">
 			</router-link>
 	

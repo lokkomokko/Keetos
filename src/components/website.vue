@@ -40,7 +40,8 @@
             <span class="web-item__date">May 2016</span>
           </a>
           <div class="web-item__image">
-            <img src="../assets/img/w1.png" height="595" width="683" alt="">
+            <div class="web-item__image-back"></div>  
+            <img src="https://f.vividscreen.info/soft/10cac5dddfcb43ebfce9e89bced1267a/Macaw-Parrot-1080x1920.jpg" height="595" width="683" alt="">
           </div>
         </div>
 
@@ -52,7 +53,8 @@
             <span class="web-item__date">May 2016</span>
           </a>
           <div class="web-item__image">
-            <img src="../assets/img/w2.png" alt="">
+          <div class="web-item__image-back"></div> 
+            <img src="https://f.vividscreen.info/soft/b9648821e30f1647035df026aecee79e/Fluffy-Cat-1080x1920.jpg" alt="">
           </div>
         </div>
 
@@ -64,7 +66,8 @@
             <span class="web-item__date">May 2016</span>
           </a>
           <div class="web-item__image">
-            <img src="../assets/img/orig.jpg" alt="">
+          <div class="web-item__image-back"></div> 
+            <img src="http://androidwalls.net/wp-content/uploads/2014/09/Top%20View%20Urban%20City%20Skyscraper%20Android%20Wallpaper.jpg" alt="">
           </div>
         </div>
 
@@ -76,7 +79,8 @@
             <span class="web-item__date">May 2016</span>
           </a>
           <div class="web-item__image">
-            <img src="../assets/img/w4.png" alt="">
+          <div class="web-item__image-back"></div> 
+            <img src="https://wallpaperscraft.com/image/eiffel_tower_paris_france_night_lights_59604_720x1280.jpg" alt="">
           </div>
         </div>        
 
@@ -91,6 +95,10 @@
 <script>
 
 import canvas_bg from './canvas'
+const ScrollMagic = require('ScrollMagic');
+require('animation.gsap');
+require('debug.addIndicators');
+const TimelineMax = require('TimelineMax');
 
 export default {
   name: 'website',
@@ -99,6 +107,35 @@ export default {
     }
   },
   mounted: function() {
+
+  // init controller
+  var controller = new ScrollMagic.Controller();
+  var animateElems = document.querySelectorAll('.web-item__image-back')
+  // build scene
+
+
+
+
+  for (var item of animateElems) {
+var tl = new TimelineMax()
+
+tl.to(item, 1, {autoAlpha: 0})
+  .to(item, 1, {autoAlpha: 1}, 1)    
+  var scene = new ScrollMagic.Scene({
+                  triggerElement: item,
+                  scrollOffset: 100,
+                  duration: '250%',
+                  triggerHook: 1
+                  })
+               
+              // .addIndicators()
+              .setTween(tl)
+              // .setClassToggle(item, 'web-item__image-back--fade')
+
+              .addTo(controller);    
+  } 
+
+
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 
         $('html, body').animate({
@@ -109,16 +146,23 @@ export default {
     // paralax on webgl
     window.onscroll = function(e) {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-        $('.web-item__image img').each(function() {
+        $('.web-item__image').each(function() {
 
+          // console.log(`$(this).offset().top <= scrolled ${$(this).offset().top - 100}, ${scrolled}`)
+          // if (($(this).offset().top - 100) <= scrolled ) {
+            var _offset = +($(this).offset().top -  scrolled)
+            var need_offset = +_offset * -0.4
 
-          if ($(this).offset().top <= scrolled) {
-            $(this).css({
-            'transform': 'translateY(' + +($(this).offset().top -  scrolled)  * -0.8 + 'px)'} )
-          }
-          else {
-            $(this).css('transform', 'translateY(0)')
-          }
+            $(this).find('img').css({
+            'transform': 'translateY(' +  need_offset + 'px)',
+            // 'opacity' : +(+(_offset  +500)* 0.001)
+
+          } )
+
+          // }
+          // else {
+            // $(this).find('img').css('transform', 'translateY(0)')
+          // }
         });
         // $('.web-item__image img').css({
         //     'transform': 'translateY(' + scrolled * -0.5 + 'px)'
@@ -194,10 +238,27 @@ export default {
     &__image {
       flex-basis: 50%;
       overflow: hidden;
+      position: relative;
+      &-back {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #000;
+        z-index: 1;
+        opacity: 1;
+        transition: .5s;
+        &--fade {
+          opacity: 0;
+        } 
+      }
       img {
         @extend %img;
         will-change: transform;
-        height: calc(100% + 10vmax);
+        position: relative;
+        top: -27vmax;
+        height: 88vmax;
         backface-visibility: hidden;
       }
     }    

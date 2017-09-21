@@ -39,6 +39,7 @@ body {
 	speak: none;
 	display: flex;
 	min-height: 100vh;
+	// height: 100% !important;
 	width: 100%;
 	position: relative;
 	-webkit-font-smoothing: antialiased;
@@ -90,13 +91,15 @@ body {
 		opacity: 1;
 	}
 	&__text {
-		font-size: 14px;
-		color: $gray;
+		font-size: 13px;
+		color: #666666;
 		display: inline-block;
 		transform: rotate(180deg) ;
 	}
 	&__svg {
 		svg {
+			// stroke: #666666;
+			// fill: #666666;
 			transform: rotate(90deg) translate(6.5px,-16px);
 			width: 7px;
 			height: 21px;			
@@ -113,9 +116,11 @@ body {
 		display: flex;
 		overflow: hidden;	
 		color: #666666;
+
 		&--low {
 			height: 21vmax;
 		}
+
 		&__left-side, &__right-side {
 			display: flex;
 			flex-basis: 50%;
@@ -148,7 +153,29 @@ body {
 		&__link {
 			font-family: MinionPro;
 			font-size: 1rem;
-			text-decoration: underline;	
+			
+			&--border {
+				box-shadow: inset 0px -1px 0px 0px #666666;
+				position: relative;
+				&:before {
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					height: 1px;
+					background-color: $blue;
+					transform: scaleX(0);
+					transition: .3s;
+				    transform-origin: 0 50%;
+				}
+				&:hover {
+					&:before {
+						transform: scaleX(1);
+
+					}
+				}				
+			}
 			&--arrow {
 				display: flex;
 				margin: auto;
@@ -180,5 +207,15 @@ body {
 			margin-right: 1.4rem;
 
 		}
+		&__center-wrapper {
+			display: flex;
+			&--top-align {
+				align-items: flex-start;
+				margin-top: 0;
+			}
+		}	
+		&--center {
+			align-items: center;
+		}	
 	}
 

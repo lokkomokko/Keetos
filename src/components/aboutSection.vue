@@ -9,44 +9,48 @@
 				<p class="big-text-section__desc">
 					We are a digital production studio specializing in web design, creation of responsive web projects and branding.
 				</p>
-				<a class="big-text-section__link" href="">
+				<a class="big-text-section__link big-text-section__link--border" href="">
 					See our projects
 				</a>
 			</div>
 		</div>
 	</div>
 	
-	<div class="big-image">
+	<div class="big-image paralax">
 		<img src="../assets/img/ab1.png" alt="">
 	</div>
 
-	<main class="big-text-section w2">
-		<div class="big-text-section__left-side">
-			<p class="big-text-section__left-text">
-				Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work. 
-				<br><br>
-				We learn from the client as much information about its business and its target audience to correct accents and bring in the desired project the whole soul of the company and create a product that brings a new level of sales.				
-			</p>
-		</div>
-		<div class="big-text-section__right-side">
-			<div class="big-text-section__right-wrap-services">
-				<h3 class="big-text-section__right-title">We do:</h3>
-				<h4 class="big-text-section__right-services-name">
-					 Websites
-				</h4>
-				<h4 class="big-text-section__right-services-name">
-					 Logo & branding
-				</h4>
-				<h4 class="big-text-section__right-services-name">
-					 UI & UX
-				</h4>
-				<h4 class="big-text-section__right-services-name">
-					 Responsive design
-				</h4>												
-				<h4 class="big-text-section__right-services-name">
-					 Mobile & Tablet
-				</h4>								
+	<main class="big-text-section big-text-section--center w2">
+		<div class="big-text-section__center-wrapper">
+			<div class="big-text-section__left-side
+			big-text-section__center-wrapper--top-align">
+				<p class="big-text-section__left-text">
+					Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work. 
+					<br><br>
+					We learn from the client as much information about its business and its target audience to correct accents and bring in the desired project the whole soul of the company and create a product that brings a new level of sales.				
+				</p>
 			</div>
+			<div class="big-text-section__right-side">
+				<div class="big-text-section__right-wrap-services
+				big-text-section__center-wrapper--top-align">
+					<h3 class="big-text-section__right-title">We do:</h3>
+					<h4 class="big-text-section__right-services-name">
+						 Websites
+					</h4>
+					<h4 class="big-text-section__right-services-name">
+						 Logo & branding
+					</h4>
+					<h4 class="big-text-section__right-services-name">
+						 UI & UX
+					</h4>
+					<h4 class="big-text-section__right-services-name">
+						 Responsive design
+					</h4>												
+					<h4 class="big-text-section__right-services-name">
+						 Mobile & Tablet
+					</h4>								
+				</div>
+			</div>			
 		</div>
 	</main>	
 	
@@ -87,10 +91,22 @@ import arrow_blue from '../assets/img/arrow_blue.svg'
 
 export default {
   name: 'aboutSection',
+
   data: function() {
   	return {
   		arrow_blue: render_svg(arrow_blue)
   	}
+  },
+  mounted() {
+
+  		const paralax = document.querySelector('.paralax img')
+
+		window.onscroll = function() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+
+        paralax.style.transform = `translateY(${+ +($(paralax).offset().top -  scrolled) * -0.4}px)`;
+	    }  	
   }
 
 }
@@ -111,7 +127,11 @@ export default {
 			@extend %img;
 		}
 	}
-
+	.paralax {
+		img {
+			height: calc(100% + 20vh);	
+		}
+	}
 	.slides-block {
 		
 		width: 100%;

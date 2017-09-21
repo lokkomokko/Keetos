@@ -14,18 +14,19 @@
 			
 			<nav>
 				<ul>
-					<li class="menu_link"><router-link to="/">About</router-link></li>
-					<li class="menu_link"><router-link to="/design">Design</router-link></li>
-					<li class="menu_link"><router-link to="/website">Website</router-link>
-					<li class="menu_link"><router-link to="/project">Branding</router-link></li>
+					<li class="menu_link"><router-link :to="{ name: 'root' }">About</router-link></li>
+					<li class="menu_link"><router-link :to="{ name: 'design' }">Design</router-link></li>
+					<li class="menu_link"><router-link :to="{ name: 'website' }">Website</router-link>
+					<li class="menu_link"><router-link to="">Branding</router-link></li>
 
 				</ul>
 			</nav>
+      <div class="separator"></div>
 			<div class="contact_block">
 				<p class="top">Already ready to work with us?</p>
 				<a class="title" href="">contact us</a>
 			</div>
-			<div class="separator"></div>
+			
 			<a class="mail" href="mailto:contact@keetos.ru">contact@keetos.ru</a>			
 		</div>
 
@@ -66,10 +67,10 @@ var menuScript = function() {
 
 	$('.artclose').click(function(){
 	  if(toggled == 0){
-	  $('.burgx3').stop().transition({rotate: "45", "margin-top": "13px", 'background-color': '#009cff'});
+	  $('.burgx3').stop().transition({rotate: "45", "margin-top": "11px", 'background-color': '#009cff'});
 	  $('.burgx2').stop().transition({opacity: "0", 'background-color': '#009cff'}, "fast");
-	  $('.burgx').stop().transition({rotate: "-45", "margin-top": "13px", 'background-color': '#009cff'});
-	  $('.burgx').css('width', '33px');
+	  $('.burgx').stop().transition({rotate: "-45", "margin-top": "11px", 'background-color': '#009cff'});
+	  $('.burgx').css('width', '28px');
 	  $('.nav_wrap').addClass('open');
 	  $('.wrapper').addClass('opacity');
 
@@ -78,8 +79,8 @@ var menuScript = function() {
 	  else{
 	  $('.burgx3').stop().transition({rotate: "+=135", "margin-top": "3px", 'background-color': '#fff'});
 	  $('.burgx2').transition({opacity: "1", 'background-color': '#fff'}, "fast");
-	  $('.burgx').stop().transition({rotate: "-=135", "margin-top": "23px", 'background-color': '#fff'});
-	  $('.burgx').css('width', '25px');
+	  $('.burgx').stop().transition({rotate: "-=135", "margin-top": "20px", 'background-color': '#fff'});
+	  $('.burgx').css('width', '21px');
 	  $('.nav_wrap').removeClass('open');
 	  $('.wrapper').removeClass('opacity');
 	  toggled--;
@@ -89,8 +90,8 @@ var menuScript = function() {
 	$('.menu_link, .home-link').click(function() {
 	  $('.burgx3').stop().transition({rotate: "+=135", "margin-top": "3px", 'background-color': '#fff'});
 	  $('.burgx2').transition({opacity: "1", 'background-color': '#fff'}, "fast");
-	  $('.burgx').stop().transition({rotate: "-=135", "margin-top": "23px", 'background-color': '#fff'});
-	  $('.burgx').css('width', '25px');
+	  $('.burgx').stop().transition({rotate: "-=135", "margin-top": "20px", 'background-color': '#fff'});
+	  $('.burgx').css('width', '21px');
 	  $('.nav_wrap').removeClass('open');
 	  $('.wrapper').removeClass('opacity');	
 	  toggled--;
@@ -115,6 +116,11 @@ var menuScript = function() {
       width: 50px;
       height: 34px;
       z-index: 30;
+      transition: .3s; 
+      
+      &:hover {
+        opacity: .7;
+      }
 
     }
     .nav_wrap {
@@ -125,6 +131,7 @@ var menuScript = function() {
       top: 0;
       background-color: #fff;
       display: flex;
+      max-height: 100vh;
       flex-direction: column;
       justify-content: space-between;
       padding: 10rem 0 4.4em;
@@ -145,7 +152,7 @@ var menuScript = function() {
           height: 22px;
           position: absolute;
           right: 4rem;
-          top: 4.1rem;
+          top: 3.8rem;
           img {
             width: 100%;
             height: 100%;
@@ -169,7 +176,7 @@ var menuScript = function() {
           transition: .3s;
           height: 1px;
           background-color: $blue;
-          width: 4.9rem;
+          width: 4.3rem;
           position: absolute;
           left: 0;
           top: 50%;
@@ -194,6 +201,10 @@ var menuScript = function() {
           color: #424242;
           text-transform: uppercase;
           font-size: 1.86667rem;
+          transition: .3s;
+          &:hover {
+            opacity: .7;
+          } 
         }
       }
       .mail {
@@ -202,12 +213,16 @@ var menuScript = function() {
         font-family: GilroyBold;
         font-size: 1rem;
         margin-left: 7.5rem;
+        transition: .3s;
+        &:hover {
+          opacity: .7;
+        }         
 
       }   
       .separator {
-        background-color: #a5a5a5;
+        background-color: #e6e6e7;
         height: 1px;
-        width: 50px;
+        width: 38px;
         margin-left: 7.5rem;
       } 
     }
@@ -228,8 +243,8 @@ height: 30px;
 .burgx, .burgx2, .burgx3 {
   margin-top: 3px;
   background: #fff;
-  width: 33px;
-  height: 4px;
+  width: 28px;
+  height: 2px;
   position: absolute;
   transition: 0.2s;
   -webkit-transform: rotate(-180deg);
@@ -238,13 +253,15 @@ height: 30px;
   -o-transform: rotate(-180deg);
 }
 .burgx {
-  width: 25px;
+  width: 21px;
+  margin-top: 20px;
+
 }
 .burgx2 {
- margin-top: 13px;
+ margin-top: 11px;
 }
 .burgx3 {
-  margin-top: 23px;
+  margin-top: 3px;   
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -258,7 +275,7 @@ height: 30px;
   a {
 
     &:hover {
-      animation: animate_menu_link 1s;
+      animation: animate_menu_link .5s;
     }   
   }
 }	

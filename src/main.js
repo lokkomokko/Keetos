@@ -8,6 +8,16 @@ import App from './App'
 import router from './router'
 import VueImg from 'v-img';
 var VueScrollTo = require('vue-scrollto');
+import vueScrollBehavior from 'vue-scroll-behavior'
+ 
+// Using vueScrollBehavior 
+Vue.use(vueScrollBehavior, {
+  router: router,
+  maxLength: 100,
+  ignore: [/\/website/, /\/zoo/],
+})
+
+
  
 Vue.use(VueScrollTo)
 

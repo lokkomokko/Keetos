@@ -20,8 +20,8 @@
     <div class="footer__right-side">
       <div class="footer__social">
         <a href="" class="footer__social-item"><span v-html="vk"></span></a>
-        <a href="" class="footer__social-item"><span v-html="fb"></span></a>
-        <a href="" class="footer__social-item"><span v-html="inst"></span></a>
+        <a href="" class="footer__social-item fb"><span v-html="fb"></span></a>
+        <a href="" class="footer__social-item inst"><span v-html="inst"></span></a>
         <a href="" class="footer__social-item"><span v-html="be"></span></a>
       </div>
     </div>
@@ -95,6 +95,7 @@ export default {
     &__social-item {
       margin-right: 16px;
       display: flex;
+
       &:hover {
         svg {
           fill: $grayHover;
@@ -103,13 +104,16 @@ export default {
       span {
       }
       svg {
-        width: 20px;
+        width: 18px;
         fill: $gray;
+        transition: .3s;
       } 
     }
     &__social {
         display: flex;      
         height: 72px;
+        align-items: flex-start;
+        margin-top: -1px;
     }
     &__nav {
       display: flex;
@@ -121,6 +125,7 @@ export default {
       font-family: GilroyBold;
       font-size: 1rem;
       text-decoration: underline;
+      transition: .3s;
       &:hover {
         color: $grayHover;
         &:first-of-type {
@@ -131,8 +136,22 @@ export default {
     }
     &__copyright {
       font-size: 0.8rem;
+      position: relative;
+      top: 17px;      
     }
 
+  }
+  .fb {
+    svg {
+      width: 15px;
+    }
+  }
+  .inst  {
+    position: relative;
+    top: 2px;
+    svg {
+      width: 13px;
+    }
   }
 
 </style>

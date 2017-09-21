@@ -58,12 +58,16 @@
     }
 	.lang {
 		font-family: GilroyBold;
-		font-size: 1rem;		
+		font-size: 1rem;	
+		transition: .3s all;
+		&:hover {
+			opacity: .7;
+		}	
 	}
 	.scroll {
 		position: absolute;
 		left: calc(50% - 7px);
-		top: -5px;
+		top: 16px;
 		cursor: pointer;
 		animation: animate_scroll 2s infinite;
 		transition: .3s all;

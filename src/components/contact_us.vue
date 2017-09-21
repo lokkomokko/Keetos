@@ -22,7 +22,7 @@
 
 <script>
 
-import contact_arrow from '../assets/img/contact-arrow.svg'
+import contact_arrow from '../assets/img/arrow.svg'
 
 const rendered = `
 <svg viewBox="${contact_arrow.viewBox}">
@@ -71,9 +71,18 @@ export default {
   }
   &__left-wrap {
     position: relative;
+    &:after {
+      content:'';
+      position: absolute;
+      left: -7.67rem;
+      top: 1rem;
+      height: 3px;
+      background-color: #fff;
+      width: 46px;
+    }    
     &:hover {
       .contact-us__arrow {
-        transform: translateX(25px) scale(1.6);
+        transform: translateX(25px)  rotate(90deg);
 
       }
     }   
@@ -83,12 +92,18 @@ export default {
     margin-bottom: 0.4rem;
   }
   &__arrow {
-    width: 46px;
+    width: 17px;
     position: absolute;
     left: -6.13rem;
     cursor: pointer;
-    top: 0.6rem;
+    top: -0.4rem;
+    transform: rotate(90deg);
     transition: .3s;
+
+    svg {
+      // width: 46px; 
+      fill: #fff;
+    }
 
 
   }
@@ -96,7 +111,7 @@ export default {
     
   }
   &__mail {
-
+    margin-top: 22px;
   }   
 }
 

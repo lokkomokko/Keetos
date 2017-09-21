@@ -25,22 +25,22 @@
             <div class="desc">Дружба. Жвачка. Газпром</div>
             <div class="scroll"><img src="../assets/img/scroll.png" alt=""></div>
             <div class="lang">
-              <a href="#">RU</a>
+              <a href="#"></a>
             </div>
           </div>
         </div>
-
-
+  
+        
         <div class="g-items">
-           <a href="" class="g-items__single item-block">
+           <router-link to="design/project" class="g-items__single item-block">
             <div class="item-block__elem">
               <img class="test" src="../assets/img/1.png" alt="">
               <div class="item-block__elem__desc">
-                <h2>Победа</h2>
+                <h2>Побеsда</h2>
                 <p>Российский авиаперелетчик</p>      
               </div>    
             </div>
-           </a>
+           </router-link>
 
            <div class="g-items__single item-block">
             <a href="1" class="item-block__elem">

@@ -40,6 +40,7 @@ export default {
 
 
 
+
     var isInViewport = function (elem) {
 
       if (elem === null) {
