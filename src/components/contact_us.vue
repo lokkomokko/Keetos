@@ -2,7 +2,16 @@
     <div class="contact-us">
       <div class="contact-us__left-side">
         <a href='' class="contact-us__left-wrap">
-          <div class="contact-us__arrow" v-html="contact_arrow"></div>
+          <div class="contact-us__arrow">
+            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 665.1 110" style="enable-background:new 0 0 265.1 110;" xml:space="preserve">
+            <g id="call-made_1_">
+              <polyline points="243.7,47.2 0,47.2 0,62.7 243.7,62.7   "/>
+            </g>
+            <polygon id="arrow" points="210.2,0.1 199.3,11 243.4,55 199.3,99.1 210.2,110 265.1,55 "/>
+            </svg>
+            
+          </div>
           <div class="contact-us__desc contact-desc">
             Already ready to work with us?
           </div>
@@ -22,11 +31,11 @@
 
 <script>
 
-import contact_arrow from '../assets/img/arrow.svg'
+import o_svg from '../assets/img/O.svg'
 
 const rendered = `
-<svg viewBox="${contact_arrow.viewBox}">
-  <use xlink:href="#${contact_arrow.id}" />
+<svg viewBox="${o_svg.viewBox}">
+  <use xlink:href="#${o_svg.id}" />
 </svg>`;
 
 
@@ -34,7 +43,7 @@ export default {
   name: 'contact_us',
   data: function() {
     return {
-      contact_arrow: rendered
+      o_svg: rendered
     }
   }
 }
@@ -71,18 +80,25 @@ export default {
   }
   &__left-wrap {
     position: relative;
-    &:after {
-      content:'';
-      position: absolute;
-      left: -7.67rem;
-      top: 1rem;
-      height: 3px;
-      background-color: #fff;
-      width: 46px;
-    }    
+    left: 7px;
+    // &:after {
+    //   content:'';
+    //   position: absolute;
+    //   left: -7.67rem;
+    //   top: 1rem;
+    //   height: 2.5px;
+    //   background-color: #fff;
+    //   width: 46px;
+    // }    
     &:hover {
       .contact-us__arrow {
-        transform: translateX(25px)  rotate(90deg);
+        #arrow {
+          transform: translateX(110px);
+        }
+        #call-made_1_ {
+          transform: scaleX(1.5);
+
+        }
 
       }
     }   
@@ -92,17 +108,18 @@ export default {
     margin-bottom: 0.4rem;
   }
   &__arrow {
-    width: 17px;
+    width: 130px;
     position: absolute;
-    left: -6.13rem;
+    left: -7.13rem;
     cursor: pointer;
-    top: -0.4rem;
-    transform: rotate(90deg);
+    top: 0.95rem;
+    // transform: rotate(90deg);
     transition: .3s;
 
     svg {
       // width: 46px; 
-      fill: #fff;
+      fill: white;
+
     }
 
 
@@ -114,7 +131,13 @@ export default {
     margin-top: 22px;
   }   
 }
-
+  #arrow {
+    transition: .3s;
+  }
+  #call-made_1_ {
+    transition: .3s;
+    
+  }
 .contact-desc {
   font-family: Gilroy;
   font-size: 0.866667rem;

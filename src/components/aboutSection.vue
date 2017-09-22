@@ -88,6 +88,11 @@
 <script>
 import render_svg from '../assets/js/render_svg.js'
 import arrow_blue from '../assets/img/arrow_blue.svg'
+const ScrollMagic = require('ScrollMagic');
+require('animation.gsap');
+require('debug.addIndicators');
+const TimelineMax = require('TimelineMax');
+
 
 export default {
   name: 'aboutSection',
@@ -98,15 +103,28 @@ export default {
   	}
   },
   mounted() {
+  		var controller = new ScrollMagic.Controller();
+  		const paralax_img = document.querySelector('.paralax img')
+  		const paralax = document.querySelector('.paralax')
 
-  		const paralax = document.querySelector('.paralax img')
+  		var scene = new ScrollMagic.Scene({
+                  triggerElement: paralax,
+                  // scrollOffset: 100,
+                  duration: '180%',
+                  triggerHook: 1
+                  })
+               
+              .addIndicators()
+              .setTween(paralax_img, 1, {y: '90%', ease:Power0.easeNone})
+              // .setClassToggle(item, 'web-item__image-back--fade')
 
-		window.onscroll = function() {
-        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+              .addTo(controller);    
+		// window.onscroll = function() {
+  //       var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
 
-        paralax.style.transform = `translateY(${+ +($(paralax).offset().top -  scrolled) * -0.4}px)`;
-	    }  	
+  //       paralax.style.transform = `translateY(${+ +($(paralax).offset().top -  scrolled) * -0.7}px)`;
+	 //    }  	
   }
 
 }
@@ -129,7 +147,10 @@ export default {
 	}
 	.paralax {
 		img {
-			height: calc(100% + 20vh);	
+			// will-change: transform;
+			position: relative;
+			top: -30vmax;
+			height: calc(100% + 20vmax);	
 		}
 	}
 	.slides-block {

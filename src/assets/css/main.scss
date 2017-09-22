@@ -97,14 +97,18 @@ body {
 		transform: rotate(180deg) ;
 	}
 	&__svg {
+
+
 		svg {
-			// stroke: #666666;
-			// fill: #666666;
+
 			transform: rotate(90deg) translate(6.5px,-16px);
 			width: 7px;
 			height: 21px;			
 		}		
 	}
+}
+#arrow {
+			fill: #666666;
 }
 
 

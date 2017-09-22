@@ -134,7 +134,7 @@ var menuScript = function() {
       max-height: 100vh;
       flex-direction: column;
       justify-content: space-between;
-      padding: 10rem 0 4.4em;
+      padding: 10rem 0 3.9em;
       box-shadow: 30px 0 128px rgba(0, 0, 0, 0.14);
       max-width: 50vw;
       width: 100%;
@@ -166,6 +166,9 @@ var menuScript = function() {
         position: relative;
         margin-bottom: 0.2em;		
         line-height: 3.6875rem;
+        &:last-of-type {
+          margin-bottom: 0;  
+        }
         &:hover {
           &:before {
             transform: scaleX(1)
@@ -224,6 +227,7 @@ var menuScript = function() {
         height: 1px;
         width: 38px;
         margin-left: 7.5rem;
+        margin-top: -0.4rem;
       } 
     }
   }
@@ -244,7 +248,7 @@ height: 30px;
   margin-top: 3px;
   background: #fff;
   width: 28px;
-  height: 2px;
+  height: 3px;
   position: absolute;
   transition: 0.2s;
   -webkit-transform: rotate(-180deg);
@@ -258,7 +262,7 @@ height: 30px;
 
 }
 .burgx2 {
- margin-top: 11px;
+ margin-top: 11.3px;
 }
 .burgx3 {
   margin-top: 3px;   

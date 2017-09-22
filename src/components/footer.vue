@@ -4,7 +4,7 @@
       <div class="footer__left-wrap">
         <nav class="footer__nav">
               <a class="footer__nav-item" href="">
-                <img :src="part_logo" alt="logo">
+                <span v-html="part_logo"></span>
               </a>
             <a class="footer__nav-item" href="">About</a>
             <a class="footer__nav-item" href="">Design</a>
@@ -38,12 +38,12 @@
 
 import render_svg from '../assets/js/render_svg.js'
 
-import part_logo from '../assets/img/logo-part.png'
+import part_logo from '../assets/img/O.svg'
 import vk from '../assets/img/004-vk-social-network-logo.svg'
 import fb from '../assets/img/005-facebook-logo.svg'
 import inst from '../assets/img/001-instagram-logo.svg'
 import be from '../assets/img/003-behance-logo.svg'
-
+// import o_svg from '../assets/img/O.svg'
 
 
 
@@ -55,7 +55,8 @@ export default {
       fb: render_svg(fb),
       inst: render_svg(inst),
       be: render_svg(be),
-      part_logo
+      // o_svg: render_svg(o_svg),
+      part_logo : render_svg(part_logo)
     }
   },
 
@@ -124,8 +125,19 @@ export default {
       margin-right: 2.6rem;      
       font-family: GilroyBold;
       font-size: 1rem;
-      text-decoration: underline;
+      box-shadow: inset 0px -1.5px 0px 0px #a4a4a4;
       transition: .3s;
+      &:first-of-type {
+        box-shadow: none;
+      }
+      span {
+        
+        svg {
+          width: 17px; 
+          fill: #a4a4a4;
+         
+        }        
+      }
       &:hover {
         color: $grayHover;
         &:first-of-type {

@@ -119,13 +119,13 @@ export default {
   for (var item of animateElems) {
 var tl = new TimelineMax()
 
-tl.to(item, 1, {autoAlpha: 0})
-  .to(item, 1, {autoAlpha: 1}, 1)    
+tl.to(item, 1, {autoAlpha: 0.9})
+  // .to(item, 1, {autoAlpha: 1}, 1)    
   var scene = new ScrollMagic.Scene({
                   triggerElement: item,
-                  scrollOffset: 100,
-                  duration: '250%',
-                  triggerHook: 1
+                  // scrollOffset: 100,
+                  duration: '100%',
+                  triggerHook: 0
                   })
                
               // .addIndicators()
@@ -247,7 +247,7 @@ tl.to(item, 1, {autoAlpha: 0})
         left: 0;
         background-color: #000;
         z-index: 1;
-        opacity: 1;
+        opacity: 0;
         transition: .5s;
         &--fade {
           opacity: 0;

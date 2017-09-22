@@ -22,7 +22,7 @@
 import render_svg from './assets/js/render_svg.js'
 
 
-import arrow_up from './assets/img/arrow_up.svg'
+import arrow_up from './assets/img/arrow.svg'
 import menuTemplate from './components/menu.vue'
 import footer_block from './components/footer.vue'
 import canvas_bg from './components/canvas.vue'
