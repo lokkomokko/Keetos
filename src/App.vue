@@ -3,7 +3,7 @@
 
       <canvas_bg></canvas_bg>  
       <menuTemplate></menuTemplate>
-      <transition>
+      <transition :name="transitionName">
         <router-view></router-view>
       </transition>	
       <div class="arrow-up" v-scroll-to="{
@@ -32,16 +32,17 @@ export default {
   name: 'app', 
   data: function() {
     return {
-      arrow_up: render_svg(arrow_up)
+      arrow_up: render_svg(arrow_up),
+      transitionName: ''
     }
   },
   mounted: function() {
+    
+
     const menu_icon = document.querySelector('.artclose');
-
-
-
-
     var isInViewport = function (elem) {
+
+
 
       if (elem === null) {
         return false}
@@ -66,6 +67,31 @@ export default {
 
 
     $(window).scroll(function() {
+
+      if ($('.bgCanvas').length >= 1) {
+         if (window.pageYOffset >= 100) {
+
+          if ($('.bgCanvas').hasClass('pause') === false) {
+
+          $('.bgCanvas').addClass('pause')
+            CapitolTriangles.triangles.pause()
+            console.log('я умер')
+        
+          }
+         }      
+         else {
+          if ($('.bgCanvas').hasClass('pause')) {
+
+          $('.bgCanvas').removeClass('pause')
+            CapitolTriangles.triangles.start()
+            console.log('я родился снова(')
+        
+          }          
+
+          }
+
+                  
+      }    
 
        const w1 = document.querySelector('.w1'), 
         w2 = document.querySelector('.w2'),
@@ -105,6 +131,14 @@ export default {
     footer_block,
     contact_us,
     
+  },
+  watch: {
+  '$route' (to, from) {
+      //     $('html, body').animate({
+      //     scrollTop: 0
+      // }, 700);
+    this.transitionName = to.name === 'project' ? 'slide-right' : 'v'
+    }
   }
 }
 </script>

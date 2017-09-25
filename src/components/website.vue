@@ -109,10 +109,10 @@ export default {
   mounted: function() {
 
   // init controller
+
   var controller = new ScrollMagic.Controller();
   var animateElems = document.querySelectorAll('.web-item__image-back')
   // build scene
-
 
 
 
@@ -123,8 +123,9 @@ tl.to(item, 1, {autoAlpha: 0.9})
   // .to(item, 1, {autoAlpha: 1}, 1)    
   var scene = new ScrollMagic.Scene({
                   triggerElement: item,
+                  offset: '50%',
                   // scrollOffset: 100,
-                  duration: '100%',
+                  duration: '120%',
                   triggerHook: 0
                   })
                
@@ -241,14 +242,15 @@ tl.to(item, 1, {autoAlpha: 0.9})
       position: relative;
       &-back {
         position: absolute;
+        will-change: transform;
         top: 0;
         bottom: 0;
         right: 0;
         left: 0;
-        background-color: #000;
+        background-color: #fff;
         z-index: 1;
         opacity: 0;
-        transition: .5s;
+        transition: none;
         &--fade {
           opacity: 0;
         } 

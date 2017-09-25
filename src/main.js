@@ -9,7 +9,9 @@ import router from './router'
 import VueImg from 'v-img';
 var VueScrollTo = require('vue-scrollto');
 import vueScrollBehavior from 'vue-scroll-behavior'
- 
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+
+
 // Using vueScrollBehavior 
 Vue.use(vueScrollBehavior, {
   router: router,
@@ -17,7 +19,15 @@ Vue.use(vueScrollBehavior, {
   ignore: [/\/website/, /\/zoo/],
 })
 
+router.beforeEach((to, from, next) => {
+	// if (window.pageYOffset >= 100) {
+ //    TweenMax.to(window, 0.5,{scrollTo:0, onComplete: () => {next()}})
 
+	// }
+	// else {
+		next()
+	// }
+})
  
 Vue.use(VueScrollTo)
 

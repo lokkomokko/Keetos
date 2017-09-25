@@ -114,8 +114,8 @@ export default {
                   triggerHook: 1
                   })
                
-              .addIndicators()
-              .setTween(paralax_img, 1, {y: '90%', ease:Power0.easeNone})
+              // .addIndicators()
+              .setTween(TweenMax.to(paralax_img, 1, {y: '90%', ease:Power0.easeNone}))
               // .setClassToggle(item, 'web-item__image-back--fade')
 
               .addTo(controller);    
@@ -147,7 +147,8 @@ export default {
 	}
 	.paralax {
 		img {
-			// will-change: transform;
+			// transition: .01s;
+			will-change: transform;
 			position: relative;
 			top: -30vmax;
 			height: calc(100% + 20vmax);	

@@ -1,4 +1,6 @@
 <template>
+
+
 	<div>
 			
 		<div class="project-top">
@@ -228,7 +230,6 @@
 
 
 	</div>
-	
 
 
 </template>
@@ -245,6 +246,9 @@ export default {
 			close_svg: close_svg
 		}
 	},
+	mounted() {
+		
+	}
 
 }
 
@@ -253,6 +257,20 @@ export default {
 <style scoped lang="scss">
 	
 	@import "../assets/css/elements/settings.scss";
+
+
+.project-enter-active, .project-leave-active {
+  transition-property: opacity;
+  transition-duration: 14s;
+}
+
+.project-enter-active {
+  transition-delay: 13s;
+}
+
+.project-enter, .v-leave-active {
+  opacity: 0
+}	
 
 	.project-top {
 		

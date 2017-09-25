@@ -1,5 +1,6 @@
 <template>
     <div class="contact-us">
+      <div class="contact-us__back"></div>
       <div class="contact-us__left-side">
         <a href='' class="contact-us__left-wrap">
           <div class="contact-us__arrow">
@@ -32,6 +33,11 @@
 <script>
 
 import o_svg from '../assets/img/O.svg'
+const ScrollMagic = require('ScrollMagic');
+require('animation.gsap');
+require('debug.addIndicators');
+const TimelineMax = require('TimelineMax');
+
 
 const rendered = `
 <svg viewBox="${o_svg.viewBox}">
@@ -45,6 +51,23 @@ export default {
     return {
       o_svg: rendered
     }
+  },
+  mounted() {
+ 
+      var controller = new ScrollMagic.Controller();
+
+      var scene = new ScrollMagic.Scene({
+                  triggerElement: document.querySelector('.contact-us'),
+                  // scrollOffset: 100,
+                  duration: '400',
+                  triggerHook: 1
+                  })
+               
+              // .addIndicators()
+              // .setTween(TweenMax.to('.contact-us > .contact-us__back', 1, {y: '40%', ease:Power0.easeNone}))
+              // .setClassToggle(item, 'web-item__image-back--fade')
+
+              .addTo(controller);     
   }
 }
 
@@ -55,9 +78,23 @@ export default {
   position: relative;
   width: 100%;
   height: 21vmax;
-  background-color: #4b75ff;
   color: #fff;
   display: flex;
+  overflow: hidden;
+  &__back {
+    position: absolute;
+    // top: -100%;
+    // height: 200%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-attachment: fixed;
+    background-color: #4b75ff;
+    background-image: url("../assets/img/contact_back.png");
+    background-size: cover;
+    background-repeat: no-repeat;    
+  }
 
   &__left-side, &__right-side  {
     flex-basis: 50%;
@@ -113,6 +150,9 @@ export default {
     left: -7.13rem;
     cursor: pointer;
     top: 0.95rem;
+    #arrow {
+     fill: #fff;
+    }    
     // transform: rotate(90deg);
     transition: .3s;
 

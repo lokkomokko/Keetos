@@ -12,6 +12,7 @@ Vue.use(Router)
 
 const scrollBehavior = (to, from, savedPosition) => {
   if (to.matched.some(m => m.meta.scrollToTop)) {
+    console.log(to)
     return {x:0, y:0}
   }
 }

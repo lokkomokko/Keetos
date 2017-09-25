@@ -125,10 +125,25 @@ export default {
       margin-right: 2.6rem;      
       font-family: GilroyBold;
       font-size: 1rem;
-      box-shadow: inset 0px -1.5px 0px 0px #a4a4a4;
+      position: relative;
+      // box-shadow: inset 0px -1px 0px 0px #a4a4a4;
+      // border-bottom: 1px solid #a4a4a4;
       transition: .3s;
+      &:after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background-color: #a4a4a4;   
+        left: 0;
+        right: 0;
+        bottom: 2px;
+      }
       &:first-of-type {
-        box-shadow: none;
+        &:after {
+          content: none;
+        }
+        // box-shadow: none;
+        // border-bottom: 1px solid transparent;
       }
       span {
         
@@ -140,6 +155,10 @@ export default {
       }
       &:hover {
         color: $grayHover;
+        // box-shadow: inset 0px -1px 0px 0px $grayHover;
+        &:after {
+          background-color: $grayHover;
+        }        
         &:first-of-type {
           opacity: 0.5;
         }        

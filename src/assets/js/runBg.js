@@ -301,10 +301,10 @@ destroy:function(){
 	this.lines = [];
 	this.lineOffset = Math.random()*60;
 	this.lineCount = 0;
-
-	this.el.removeChild(this.renderer.domElement);
-	this.el.removeChild(this.bg);
-	// this.renderer = false;
+	// $('.bgCanvas div').remove()
+	// this.el.removeChild(this.renderer.domElement);
+	// this.el.removeChild(this.bg);
+	this.renderer = false;
 
 	// this.bg.style.opacity = '1';
 	// this.bg.style.display = 'block';

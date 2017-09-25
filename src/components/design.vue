@@ -32,7 +32,7 @@
   
         
         <div class="g-items">
-           <router-link to="design/project" class="g-items__single item-block">
+           <a href="" data-project-link="project" class="g-items__single item-block">
             <div class="item-block__elem">
               <img class="test" src="../assets/img/1.png" alt="">
               <div class="item-block__elem__desc">
@@ -40,7 +40,7 @@
                 <p>Российский авиаперелетчик</p>      
               </div>    
             </div>
-           </router-link>
+           </a>
 
            <div class="g-items__single item-block">
             <a href="1" class="item-block__elem">
@@ -141,16 +141,39 @@ export default {
   name: 'design',
   data () {
     return {
+
     }
   },
   mounted: function() {
+    const that = this
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 
-      console.log(block_height)
+
         $('html, body').animate({
             scrollTop: block_height
         }, 700);
     }); 
+    var items_project = document.querySelectorAll('.g-items a')
+    for (const item of items_project) {
+
+      item.onclick = function(e) {
+       e.preventDefault(); 
+        e.stopPropagation();
+
+        // console.log(item.getAttribute('data-project-link'))
+        var tl = new TimelineMax()
+          tl.to(item, 1, {autoAlpha: 0, onComplete: go_route})
+          function go_route() {
+            that.$router.push({name: 'project', params: { userId: 123 }})
+          }
+
+      }
+    }
+    // document.querySelectorAll('.item-block__elem').click((e)=> {
+    //   e.prevendDefault()
+    //   console.log(23232)
+    // })
+
   },  
   components: {
     canvas_bg
