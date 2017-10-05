@@ -108,6 +108,11 @@ export default {
   },
   mounted: function() {
 
+    if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
+        $('.bgCanvas').removeClass('pause')
+          CapitolTriangles.triangles.start()    
+    }
+    
   // init controller
 
   var controller = new ScrollMagic.Controller();

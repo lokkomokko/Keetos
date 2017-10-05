@@ -33,10 +33,10 @@
 <script>
 
 import o_svg from '../assets/img/O.svg'
-const ScrollMagic = require('ScrollMagic');
+import * as anim from '../assets/js/arrow_animation.js'
+// const ScrollMagic = require('ScrollMagic');
 require('animation.gsap');
 require('debug.addIndicators');
-const TimelineMax = require('TimelineMax');
 
 
 const rendered = `
@@ -54,20 +54,39 @@ export default {
   },
   mounted() {
  
-      var controller = new ScrollMagic.Controller();
+      // var controller = new ScrollMagic.Controller();
 
-      var scene = new ScrollMagic.Scene({
-                  triggerElement: document.querySelector('.contact-us'),
-                  // scrollOffset: 100,
-                  duration: '400',
-                  triggerHook: 1
-                  })
+      // var scene = new ScrollMagic.Scene({
+      //             triggerElement: document.querySelector('.contact-us'),
+      //             // scrollOffset: 100,
+      //             duration: '400',
+      //             triggerHook: 1
+      //             })
                
-              // .addIndicators()
-              // .setTween(TweenMax.to('.contact-us > .contact-us__back', 1, {y: '40%', ease:Power0.easeNone}))
-              // .setClassToggle(item, 'web-item__image-back--fade')
+      //         // .addIndicators()
+      //         // .setTween(TweenMax.to('.contact-us > .contact-us__back', 1, {y: '40%', ease:Power0.easeNone}))
+      //         // .setClassToggle(item, 'web-item__image-back--fade')
+      //         .addTo(controller);     
+      
 
-              .addTo(controller);     
+
+
+      
+
+       
+
+      document.querySelector('.contact-us__left-wrap').addEventListener('mouseenter', (e) => {
+        anim.arrow_anim_start(e)
+
+      })
+      document.querySelector('.contact-us__left-wrap').addEventListener('mouseleave', (e) => {
+
+        anim.arrow_anim_finish(e)
+        
+      })
+
+
+
   }
 }
 
@@ -90,6 +109,7 @@ export default {
     left: 0;
     right: 0;
     background-attachment: fixed;
+    will-change: transform;
     background-color: #4b75ff;
     background-image: url("../assets/img/contact_back.png");
     background-size: cover;
@@ -129,32 +149,29 @@ export default {
     // }    
     &:hover {
       .contact-us__arrow {
-        #arrow {
-          transform: translateX(110px);
-        }
-        #call-made_1_ {
-          transform: scaleX(1.5);
+        // #arrow {
+        //   transform: translateX(260px);
+        // }
 
-        }
 
       }
     }   
   }
 
   &__desc {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.7rem;
   }
   &__arrow {
-    width: 130px;
+    width: 100px;
     position: absolute;
-    left: -7.13rem;
+    left: -6.43rem;
     cursor: pointer;
-    top: 0.95rem;
+    top: 1.3rem;
     #arrow {
      fill: #fff;
     }    
     // transform: rotate(90deg);
-    transition: .3s;
+    transition: .3s ease;
 
     svg {
       // width: 46px; 
@@ -171,17 +188,18 @@ export default {
     margin-top: 22px;
   }   
 }
-  #arrow {
-    transition: .3s;
-  }
+  // #arrow {
+  //   transition: .3s ease;
+  // }
   #call-made_1_ {
-    transition: .3s;
+    // transition: .3s;
     
   }
 .contact-desc {
   font-family: Gilroy;
   font-size: 0.866667rem;
   font-style: italic;
+  margin-top: 8px;
 }
 .contact-title {
   font-family: GilroyBold;
@@ -193,9 +211,28 @@ export default {
   text-decoration: underline;
   font-family: GilroyBold;
   font-size: 1rem;
+  z-index: 1;
+}
+  .arrow-anim {
+    animation: arrow-lenght 1s;
+    // animation-fill-mode: both;
+    transition: 3s;
+  }
+
+@keyframes arrow-lenght {
+  0% {
+    transform: scaleX(1.5);
+  }
+  50% {
+    transform: translateX(50px) scaleX(3.5);
+    // animation: stop;
+  }
+  100% {
+    transform: translateX(50px) scaleX(3.5);
+  }
+
 }
 
-  
 </style>
 
 

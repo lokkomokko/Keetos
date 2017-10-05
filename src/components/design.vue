@@ -136,6 +136,7 @@
 <script>
 
 import canvas_bg from './canvas'
+const ScrollMagic = require('ScrollMagic')
 
 export default {
   name: 'design',
@@ -145,6 +146,16 @@ export default {
     }
   },
   mounted: function() {
+    
+    //  var controller = new ScrollMagic.Controller();
+    // controller.enabled(false);
+    if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
+        $('.bgCanvas').removeClass('pause')
+          CapitolTriangles.triangles.start()    
+    }
+
+
+
     const that = this
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 

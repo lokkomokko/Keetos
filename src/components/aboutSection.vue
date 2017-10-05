@@ -75,8 +75,16 @@
 		</div>
 		<div class="big-text-section__right-side">
 			<a href="" class="big-text-section__link big-text-section__link--arrow">
-				<span class="big-text-section__link-arrow" v-html="arrow_blue"></span>
-				See all projects
+				<span class="big-text-section__link-arrow ">
+		            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		               viewBox="0 0 665.1 110" style="enable-background:new 0 0 265.1 110;" xml:space="preserve">
+		            <g id="call-made_1_">
+		              <polyline points="243.7,47.2 0,47.2 0,62.7 243.7,62.7   "/>
+		            </g>
+		            <polygon id="arrow" points="210.2,0.1 199.3,11 243.4,55 199.3,99.1 210.2,110 265.1,55 "/>
+		            </svg>					
+				</span>
+				<span class="big-text-section__link--border">See all projects</span>
 			</a>
 		</div>
 	</div>	
@@ -87,22 +95,29 @@
 
 <script>
 import render_svg from '../assets/js/render_svg.js'
-import arrow_blue from '../assets/img/arrow_blue.svg'
+// import arrow_blue from '../assets/img/arrow_blue.svg'
+
 const ScrollMagic = require('ScrollMagic');
 require('animation.gsap');
 require('debug.addIndicators');
 const TimelineMax = require('TimelineMax');
-
+import * as anim from '../assets/js/arrow_animation.js'
 
 export default {
   name: 'aboutSection',
 
   data: function() {
   	return {
-  		arrow_blue: render_svg(arrow_blue)
+  		// arrow_blue: render_svg(arrow_blue)
   	}
   },
   mounted() {
+
+    if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
+        $('.bgCanvas').removeClass('pause')
+          CapitolTriangles.triangles.start()    
+    }  	
+    
   		var controller = new ScrollMagic.Controller();
   		const paralax_img = document.querySelector('.paralax img')
   		const paralax = document.querySelector('.paralax')
@@ -119,12 +134,16 @@ export default {
               // .setClassToggle(item, 'web-item__image-back--fade')
 
               .addTo(controller);    
-		// window.onscroll = function() {
-  //       var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
+	        document.querySelector('.big-text-section__link--arrow ').addEventListener('mouseenter', (e) => {
+	          anim.arrow_anim_start(e)
 
-  //       paralax.style.transform = `translateY(${+ +($(paralax).offset().top -  scrolled) * -0.7}px)`;
-	 //    }  	
+	        })
+	        document.querySelector('.big-text-section__link--arrow ').addEventListener('mouseleave', (e) => {
+
+	          anim.arrow_anim_finish(e)
+	          
+	        })    	
   }
 
 }

@@ -17,7 +17,8 @@
 		@include back;
 		&:before {
 			opacity: .2;
-			z-index: 3;
+			z-index: 10;
+			will-change: transform;
 
 		}
 		&:hover {
@@ -27,7 +28,7 @@
 		}
 		&__desc {
 			position: relative;
-			z-index: 10;
+			z-index: 11;
 			margin-top: auto;
 			font-size: 0.866667rem;
 		}

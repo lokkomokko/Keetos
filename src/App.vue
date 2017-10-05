@@ -68,7 +68,7 @@ export default {
 
     $(window).scroll(function() {
 
-      if ($('.bgCanvas').length >= 1) {
+      if ($('.bgCanvas').length >= 1 && $('.project-top').length === 0) {
          if (window.pageYOffset >= 100) {
 
           if ($('.bgCanvas').hasClass('pause') === false) {

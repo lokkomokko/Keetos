@@ -4,7 +4,9 @@
 	<div>
 			
 		<div class="project-top">
-			<img class="project-top__image" src="../assets/img/p1.png" alt="">
+			<div class="project-top__image">
+				<img  src="../assets/img/p1.png" alt="">				
+			</div>
 			<h1 class="project-top__title">Победа </h1>
 			<p class="project-top__desc">
 				Российский авиаперевозчик и дешевые билеты  в Сочи
@@ -50,7 +52,7 @@
 				<div class="project-desc-section__col 
 							project-desc-section__col--small
 				">
-					<h3 class="big-text-section__right-title color-666">Что мы сделали:</h3>
+					<h3 class="big-text-section__right-title big-text-section__right-title--project-page color-666">Что мы сделали:</h3>
 					<h4 class="big-text-section__right-services-name color-93">
 						 branding
 					</h4>
@@ -238,6 +240,12 @@
 <script>
 import render_svg from '../assets/js/render_svg.js'
 import close_svg from '../assets/img/close.png'
+const ScrollMagic = require('ScrollMagic');
+require('animation.gsap');
+require('debug.addIndicators');
+const TimelineMax = require('TimelineMax');
+import * as anim from '../assets/js/arrow_animation.js'
+
 
 export default {
 	name: 'project',
@@ -247,7 +255,73 @@ export default {
 		}
 	},
 	mounted() {
-		
+          // $('.bgCanvas').addClass('pause')
+            CapitolTriangles.triangles.pause()
+            $('.bgCanvas').addClass('pause')
+
+
+  		var controller = new ScrollMagic.Controller();
+  		var animateElems = document.querySelectorAll('.project-image-item--small')
+
+
+
+  		var count = 0
+  		for (var item of animateElems) {
+  			count++
+			var tl = new TimelineMax()
+
+	  		var scene = new ScrollMagic.Scene({
+	                  triggerElement: item,
+	                  // scrollOffset: 100,
+	                  duration: '200%',
+	                  triggerHook: .9
+	                  })
+	               
+	          
+	        if (count % 2 === 0) {
+				scene.setTween(TweenMax.to(item.querySelector('img'), 1, {y: '-35%', ease:Power0.easeNone}))	        	
+	        }
+	        else {
+				scene.setTween(TweenMax.to(item.querySelector('img'), 1, {y: '-35%', ease:Power0.easeNone}))	        	
+	        }
+	       
+
+	              scene.addTo(controller);
+  		}
+
+
+  		const paralax_img = document.querySelector('.project-top__image')
+  		const paralax = document.querySelector('.project-top')
+
+  		var scene_par = new ScrollMagic.Scene({
+                  triggerElement: paralax,
+                  // scrollOffset: 100,
+                  duration: '100%',
+                  triggerHook: 0
+                  })
+               
+              .setTween(TweenMax.to(paralax_img, 1, {y: '90%', ease:Power0.easeNone}))
+              // .setClassToggle(item, 'web-item__image-back--fade')
+              // .addIndicators()
+
+              .addTo(controller);   
+
+  		const paralax_img2 = document.querySelector('.project-big-image img')
+  		const paralax2 = document.querySelector('.project-big-image')
+
+  		var scene_par2 = new ScrollMagic.Scene({
+                  triggerElement: paralax2,
+                  // scrollOffset: 100,
+                  duration: '200%',
+                  triggerHook: 1
+                  })
+               
+              .setTween(TweenMax.to(paralax_img2, 1, {y: '90%', ease:Power0.easeNone}))
+              // .setClassToggle(item, 'web-item__image-back--fade')
+              // .addIndicators()
+
+              .addTo(controller);                 		
+
 	}
 
 }
@@ -285,26 +359,31 @@ export default {
 	    box-sizing: border-box;
 		font-family: GilroyBold;
 		justify-content: center;
-			
-		&:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			top: 0;				
-			background-color: #000;
-			opacity: .2;
-			z-index: 0;
-		}		
+		overflow: hidden;
+		
+		
 		&__image {
 			position: absolute;
 			left: 0;
 			right: 0;
 			bottom: 0;
-			top: 0;
 			z-index: -1;
-			@extend %img;
+			top: -10vmax;
+			img {
+				@extend %img;
+			}
+			&:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;				
+				background-color: #000;
+				opacity: .2;
+				z-index: 0;
+			}			
+			
 		}
 		&__title, &__desc {
 			position: relative;
@@ -363,7 +442,7 @@ export default {
 		}
 		&__text-1 {
 			line-height: 34.12px;
-			font-size: 1.13333rem;		
+			font-size: 0.933333rem;		
 			color: #666666;
 		}
 		&__text-2 {
@@ -376,7 +455,7 @@ export default {
 			width: 100%;
 			color: $blue;				
 			font-size: 1.33333rem;	
-			margin-bottom: 37px;
+			margin-bottom: 1.53333rem;
 		}
 
 	}
@@ -393,7 +472,8 @@ export default {
 		position: relative;
 		display: flex;
 		margin-bottom: 10.8rem;		
-
+		overflow: hidden;
+		
 		&:after {
 			// @extend %opacity-img;
 			// opacity: 0.2;
@@ -401,7 +481,7 @@ export default {
 		&__image {
 			position: absolute;
 			left: 0;
-			top: 0;
+			top: -30vmax;
 			@extend %img;
 
 		}	
@@ -460,6 +540,7 @@ export default {
 		&__image {
 			flex-basis: 50%;
 			img {
+				will-change: transform;
 				@extend %img;
 			    object-position: center;
 			}
@@ -491,13 +572,22 @@ export default {
 			position: relative;
 			display: flex;
 			flex-direction: column;
+			overflow: hidden;
+			&:hover {
+				img {
+					transform: scale(1);
+				}
+			}			
 		}
 		&__image {
+			transition: 0.7s;
+			transform: scale(1.1);
 			position: absolute;
 			top: 0;
 			left: 0;
 			@extend %img;
 			z-index: -1;
+
 		}
 		&__text-wrap {
 			margin-top: auto;
