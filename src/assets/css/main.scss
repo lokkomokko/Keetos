@@ -54,14 +54,14 @@ body {
 // main structure stylesheet
 .wrapper {
 	z-index: 1;
-    width: 100vw;
+    width: 100%;
     position: absolute;	
     left: 0;
     top: 0;
 	@include back;	
 		&:before {			
 			background-color: #fff;
-			width: 100vw;
+			width: 100%;
 			z-index: -2;
 		}	
 	&.opacity {

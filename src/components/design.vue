@@ -34,7 +34,7 @@
         <div class="g-items">
            <a href="" data-project-link="project" class="g-items__single item-block">
             <div class="item-block__elem">
-              <img class="test" src="../assets/img/1.png" alt="">
+              <img class="test" src="../assets/img/p1.png" alt="">
               <div class="item-block__elem__desc">
                 <h2>Побеsда</h2>
                 <p>Российский авиаперелетчик</p>      
@@ -142,21 +142,38 @@ export default {
   name: 'design',
   data () {
     return {
-
+        // scroll_top: 0
     }
   },
   mounted: function() {
-    
+      
     //  var controller = new ScrollMagic.Controller();
     // controller.enabled(false);
+
+    setTimeout(()=> {
+      window.scrollTo(0, window.savedScrolldisign || 0)
+    }, 500)
+    
+
+    // $(window).scroll(()=>{
+    //   window.savedScrolldisign = window.pageYOffset
+    //   console.log(window.savedScrolldisign)
+    // })
+    const that = this
+    
     if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
         $('.bgCanvas').removeClass('pause')
           CapitolTriangles.triangles.start()    
     }
 
 
+    window.onscroll = function() {
+      if (that.$route.name === 'design') {
+        window.savedScrolldisign = window.pageYOffset
+      }
 
-    const that = this
+    }
+    
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 
 
@@ -168,14 +185,40 @@ export default {
     for (const item of items_project) {
 
       item.onclick = function(e) {
-       e.preventDefault(); 
-        e.stopPropagation();
 
-        // console.log(item.getAttribute('data-project-link'))
+       e.preventDefault(); 
+       e.stopPropagation();
+
+
+$( "body" ).bind( "mousewheel", function(e) {
+
+              e.preventDefault();
+              e.stopPropagation();
+});
+ 
+
+        var image_anim = $('<div class="image_anim"></div>')
+        $('.hello_section').after(image_anim)
+        $('.image_anim').html($(item).find('img').clone())
+
+        var offset_top = $(item).find('img').offset().top  
+        var offset_left = $(item).find('img').offset().left
+        var item_width = $(item).find('img').width()  
+        var item_height = $(item).find('img').height()  
+
+
+        $('.image_anim').css({'top': offset_top, 'left' : offset_left, 'height': item_height, 'width': item_width})
+
+
         var tl = new TimelineMax()
-          tl.to(item, 1, {autoAlpha: 0, onComplete: go_route})
+          tl.to('.image_anim', .8, {width: $(window).width(),height: $(window).height(), top: window.pageYOffset, left: 0, onComplete: go_route})
+          .to('.image_anim img', 0, {top: '-10vmax', height: 'calc(100% + 10vmax)', }, 0)
+          .to('.image_anim',0 ,{position: 'fixed', top: 0}, .8)
+          .to(()=>{}, 0, {onComplete: ()=>{$('.image_anim').addClass('image_anim--go')}},0)
           function go_route() {
+          $( "body" ).unbind( "mousewheel");      
             that.$router.push({name: 'project', params: { userId: 123 }})
+
           }
 
       }
@@ -186,6 +229,13 @@ export default {
     // })
 
   },  
+  watch: {
+    $route: function() {
+        window.scrollTo(0, 0)
+
+      console.log($route)
+    }
+  },
   components: {
     canvas_bg
   }

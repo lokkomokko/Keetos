@@ -13,21 +13,17 @@ import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 
 // Using vueScrollBehavior 
-Vue.use(vueScrollBehavior, {
-  router: router,
-  maxLength: 100,
-  ignore: [/\/website/, /\/zoo/],
-})
+// Vue.use(vueScrollBehavior, {
+//   router: router,
+//   maxLength: 100,
+//   // ignore: [/\/website/, /\/zoo/],
+// })
 
-router.beforeEach((to, from, next) => {
-	// if (window.pageYOffset >= 100) {
- //    TweenMax.to(window, 0.5,{scrollTo:0, onComplete: () => {next()}})
-
-	// }
-	// else {
-		next()
-	// }
-})
+// router.beforeEach(function (to, from, next) {
+//   window.scrollTo(0, window.pageYOffset)
+//   console.log(window.pageYOffset);
+//   next()
+// })
  
 Vue.use(VueScrollTo)
 

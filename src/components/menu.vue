@@ -167,7 +167,7 @@ var menuScript = function() {
       justify-content: space-between;
       padding: 8rem 0 3.9em;
       box-shadow: 30px 0 128px rgba(0, 0, 0, 0.14);
-      max-width: 50vw;
+      max-width: 50%;
       width: 100%;
       transform: translateX(-57vw);
       transition: .5s all;

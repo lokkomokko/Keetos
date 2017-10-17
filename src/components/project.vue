@@ -7,25 +7,35 @@
 			<div class="project-top__image">
 				<img  src="../assets/img/p1.png" alt="">				
 			</div>
-			<h1 class="project-top__title">Победа </h1>
-			<p class="project-top__desc">
-				Российский авиаперевозчик и дешевые билеты  в Сочи
-			</p>
-			<router-link class="project-top__close" to="/design">
-				<img :src="close_svg" alt="close">
-			</router-link>
-	
-			<div class="bottom_section bottom_section--project">
+			<transition appear>
+				<h1 class="project-top__title">Победа </h1>			
+			</transition>	
+			<transition appear>
+				<p class="project-top__desc">
+					Российский авиаперевозчик и дешевые билеты  в Сочи
+				</p>
+			</transition>
+			<transition appear>
+				<router-link class="project-top__close" to="/design">
+					<img :src="close_svg" alt="close">
+				</router-link>			
+			</transition>
+
+			<transition appear>
 			
-				<a href='' class="desc desc--link">www.pobeda.aero</a>
-				<div class="scroll"  v-scroll-to="{
-				el: '.project-desc-section',
-			     duration: 1000}"
-     ><img src="../assets/img/scroll.png" alt=""></div>
-				<div class="lang">
-					<a href="#">RU</a>
-				</div>
-			</div>			
+				<div class="bottom_section bottom_section--project">
+				
+					<a href='' class="desc desc--link">www.pobeda.aero</a>
+					<div class="scroll"  v-scroll-to="{
+					el: '.project-desc-section',
+				     duration: 1000}"
+	     ><img src="../assets/img/scroll.png" alt=""></div>
+					<div class="lang">
+						<a href="#">RU</a>
+					</div>
+				</div>			
+			</transition>
+
 		</div>
 
 		<div class="project-desc-section w5">
@@ -71,7 +81,7 @@
 
 		</div>	
 
-		<div class="project-big-image">
+		<div class="project-big-image project-big-image">
 			<img src="../assets/img/pr1.png" alt="" class="project-big-image__image">
 			<div class="project-big-image__text-wrap">
 				<h5 class="project-big-image__name project-name">
@@ -254,8 +264,19 @@ export default {
 			close_svg: close_svg
 		}
 	},
+	created() {
+		// $('.bgCanvas').hide()
+
+	},
 	mounted() {
-          // $('.bgCanvas').addClass('pause')
+
+	    setTimeout(()=>{
+	      window.scrollTo(0, 0)
+	    }, )
+		// $('.bgCanvas').hide()
+
+
+		    
             CapitolTriangles.triangles.pause()
             $('.bgCanvas').addClass('pause')
 
@@ -306,8 +327,8 @@ export default {
 
               .addTo(controller);   
 
-  		const paralax_img2 = document.querySelector('.project-big-image img')
-  		const paralax2 = document.querySelector('.project-big-image')
+  		const paralax_img2 = document.querySelector('.project-bottom-image img')
+  		const paralax2 = document.querySelector('.project-bottom-image')
 
   		var scene_par2 = new ScrollMagic.Scene({
                   triggerElement: paralax2,
@@ -332,7 +353,9 @@ export default {
 	
 	@import "../assets/css/elements/settings.scss";
 
-
+.bgCanvas {
+	display: none;
+}
 .project-enter-active, .project-leave-active {
   transition-property: opacity;
   transition-duration: 14s;
@@ -368,9 +391,10 @@ export default {
 			right: 0;
 			bottom: 0;
 			z-index: -1;
-			top: -10vmax;
+			top: -10vmax;	
 			img {
 				@extend %img;
+			    object-position: top;
 			}
 			&:after {
 				content: '';
@@ -473,7 +497,11 @@ export default {
 		display: flex;
 		margin-bottom: 10.8rem;		
 		overflow: hidden;
-		
+		&--paralax {
+			img {
+				top: -30vmax;
+			}
+		}	
 		&:after {
 			// @extend %opacity-img;
 			// opacity: 0.2;
@@ -481,7 +509,6 @@ export default {
 		&__image {
 			position: absolute;
 			left: 0;
-			top: -30vmax;
 			@extend %img;
 
 		}	
@@ -556,8 +583,12 @@ export default {
 	.project-bottom-image {
 		width: 100%;
 		height: 21vmax;
+		overflow: hidden;
 		img {
-			@extend %img
+			top: -50%;
+			position: relative;		
+			@extend %img;
+			height: 120%;	
 		}
 	}
 	.project-other-projects {

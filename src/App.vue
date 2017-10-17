@@ -28,21 +28,7 @@ import footer_block from './components/footer.vue'
 import canvas_bg from './components/canvas.vue'
 import contact_us from './components/contact_us.vue'
 
-export default {
-  name: 'app', 
-  data: function() {
-    return {
-      arrow_up: render_svg(arrow_up),
-      transitionName: ''
-    }
-  },
-  mounted: function() {
-    
-
-    const menu_icon = document.querySelector('.artclose');
     var isInViewport = function (elem) {
-
-
 
       if (elem === null) {
         return false}
@@ -61,12 +47,30 @@ export default {
               return false;
 
         }
-      // }
 
     };
 
 
+export default {
+  name: 'app', 
+  data: function() {
+    return {
+      arrow_up: render_svg(arrow_up),
+      transitionName: '',
+      menu_icon: ''
+      // savedScrolldisign: 123
+    }
+  },
+  mounted: function() {
+    
+    // window.savedScrolldisign = 123
+    this.menu_icon = document.querySelector('.artclose');
+
+    const self = this
+
     $(window).scroll(function() {
+
+    // console.log(window.pageYOffset);
 
       if ($('.bgCanvas').length >= 1 && $('.project-top').length === 0) {
          if (window.pageYOffset >= 100) {
@@ -102,10 +106,10 @@ export default {
         w8 = document.querySelector('.w8');
 
       if ( isInViewport(w1) || isInViewport(w2) || isInViewport(w3) || isInViewport(w4) || isInViewport(w5) || isInViewport(w6) ||  isInViewport(w8)) {
-        menu_icon.classList.add('artclose--blue')
+        self.menu_icon.classList.add('artclose--blue')
       }
       else {
-        menu_icon.classList.remove('artclose--blue')
+        self.menu_icon.classList.remove('artclose--blue')
       }
       // var scrolled = window.pageYOffset || document.documentElement.scrollTop;
        var top_scroll = $('.hello_section').height() == undefined ? $('.project-top').height() : $('.hello_section').height()   
@@ -138,6 +142,24 @@ export default {
       //     scrollTop: 0
       // }, 700);
     this.transitionName = to.name === 'project' ? 'slide-right' : 'v'
+
+       const w1 = document.querySelector('.w1'), 
+        w2 = document.querySelector('.w2'),
+        w3 = document.querySelector('.w3'),
+        w4 = document.querySelector('.w4'), 
+        w5 = document.querySelector('.w5'),
+        w6 = document.querySelector('.w6'),
+        w8 = document.querySelector('.w8');
+
+      setTimeout(() => {
+      if ( isInViewport(w1) || isInViewport(w2) || isInViewport(w3) || isInViewport(w4) || isInViewport(w5) || isInViewport(w6) ||  isInViewport(w8)) {
+        this.menu_icon.classList.add('artclose--blue')
+      }
+      else {
+        this.menu_icon.classList.remove('artclose--blue')
+      }    
+      console.log(32323);     
+    }, 600)   
     }
   }
 }
@@ -149,11 +171,11 @@ export default {
 <style>
 .v-enter-active, .v-leave-active {
   transition-property: opacity;
-  transition-duration: .3s;
+  transition-duration: .5s;
 }
 
 .v-enter-active {
-  transition-delay: .3s;
+  transition-delay: .5s;
 }
 
 .v-enter, .v-leave-active {

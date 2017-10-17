@@ -112,6 +112,10 @@ export default {
   	}
   },
   mounted() {
+  	
+    setTimeout(()=>{
+      window.scrollTo(0, 0)
+    }, 500)
 
     if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
         $('.bgCanvas').removeClass('pause')

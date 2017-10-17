@@ -108,6 +108,10 @@ export default {
   },
   mounted: function() {
 
+    setTimeout(()=>{
+      window.scrollTo(0, 0)
+    }, 500)
+
     if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
         $('.bgCanvas').removeClass('pause')
           CapitolTriangles.triangles.start()    
@@ -153,7 +157,7 @@ tl.to(item, 1, {autoAlpha: 0.9})
     window.onscroll = function(e) {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop;
         $('.web-item__image').each(function() {
-
+          
           // console.log(`$(this).offset().top <= scrolled ${$(this).offset().top - 100}, ${scrolled}`)
           // if (($(this).offset().top - 100) <= scrolled ) {
             var _offset = +($(this).offset().top -  scrolled)
