@@ -115,7 +115,7 @@ export default {
   	
     setTimeout(()=>{
       window.scrollTo(0, 0)
-    }, 500)
+    }, window.scrollTime)
 
     if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
         $('.bgCanvas').removeClass('pause')

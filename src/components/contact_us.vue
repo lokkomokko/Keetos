@@ -186,6 +186,9 @@ export default {
   }
   &__mail {
     margin-top: 22px;
+    &:hover {
+      opacity: .8;
+    }
   }   
 }
   // #arrow {

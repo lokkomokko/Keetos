@@ -25,7 +25,7 @@
 			
 				<div class="bottom_section bottom_section--project">
 				
-					<a href='' class="desc desc--link">www.pobeda.aero</a>
+					<a href='' class="desc desc--link big-text-section__link--border">www.pobeda.aero</a>
 					<div class="scroll"  v-scroll-to="{
 					el: '.project-desc-section',
 				     duration: 1000}"
@@ -294,8 +294,8 @@ export default {
 	  		var scene = new ScrollMagic.Scene({
 	                  triggerElement: item,
 	                  // scrollOffset: 100,
-	                  duration: '200%',
-	                  triggerHook: .9
+	                  duration: '100%',
+	                  triggerHook: .5
 	                  })
 	               
 	          
@@ -417,18 +417,19 @@ export default {
 		}
 		&__title {
 			font-size: 4.93333rem;
+		    margin-left: 10.2rem;
 			margin-bottom: 0.933333rem;	
 		}
 		&__desc {
 			font-size: 1.33333rem;
 			line-height: 1.6rem;
-			max-width: 32.6667rem
+			max-width: 29.67rem
 		}
 		&__close {
 			z-index: 1;
 			position: absolute;
 			right: 4rem;
-			top: 47px;
+			top: 55px;
 
 		    cursor: pointer;
 		    &:hover {
@@ -444,12 +445,12 @@ export default {
 		padding-top: 140px;
 		box-sizing: border-box;
 		&__row {
-			margin-bottom: 8.13333rem;
+			margin-bottom: 7.13333rem;
 			display: flex;
 			flex-wrap: wrap;
 		}	
 		&__date {
-		    margin-top: 169px;
+		    // margin-top: 169px;
 		    font-family: MinionPro;
 			color: $grayHover;
 			font-size: 0.866667rem;
@@ -634,6 +635,10 @@ export default {
 		}
 	}
 
-
+	.w5 {
+		height: 100vh;
+		box-sizing: border-box;
+		margin-bottom: 0;
+	}
 </style>
 

@@ -152,7 +152,8 @@ export default {
 
     setTimeout(()=> {
       window.scrollTo(0, window.savedScrolldisign || 0)
-    }, 500)
+    }, window.scrollTime)
+
     
 
     // $(window).scroll(()=>{
@@ -209,16 +210,17 @@ $( "body" ).bind( "mousewheel", function(e) {
 
         $('.image_anim').css({'top': offset_top, 'left' : offset_left, 'height': item_height, 'width': item_width})
 
-
+        var br=document.querySelector('.image_anim').getBoundingClientRect()
+        console.log(br.top)
         var tl = new TimelineMax()
-          tl.to('.image_anim', .8, {width: $(window).width(),height: $(window).height(), top: window.pageYOffset, left: 0, onComplete: go_route})
+          tl.to('.image_anim', .3, {width: $(window).width(),height: $(window).height(), x: -($('.image_anim').offset().left), y: -(br.top), onComplete: go_route})
           .to('.image_anim img', 0, {top: '-10vmax', height: 'calc(100% + 10vmax)', }, 0)
-          .to('.image_anim',0 ,{position: 'fixed', top: 0}, .8)
+          .to('.image_anim',0 ,{position: 'fixed', top: 0, x: 0, y:0, left: 0, }, .3)
           .to(()=>{}, 0, {onComplete: ()=>{$('.image_anim').addClass('image_anim--go')}},0)
+
           function go_route() {
           $( "body" ).unbind( "mousewheel");      
             that.$router.push({name: 'project', params: { userId: 123 }})
-
           }
 
       }
@@ -229,13 +231,12 @@ $( "body" ).bind( "mousewheel", function(e) {
     // })
 
   },  
-  watch: {
-    $route: function() {
-        window.scrollTo(0, 0)
+  // watch: {
+  //   $route: function() {
+  //       window.scrollTo(0, 0)
 
-      console.log($route)
-    }
-  },
+  //   }
+  // },
   components: {
     canvas_bg
   }

@@ -110,7 +110,7 @@ export default {
 
     setTimeout(()=>{
       window.scrollTo(0, 0)
-    }, 500)
+    }, window.scrollTime)
 
     if ($('.bgCanvas').hasClass('pause') && window.pageYOffset <= 100) {
         $('.bgCanvas').removeClass('pause')
@@ -256,7 +256,7 @@ tl.to(item, 1, {autoAlpha: 0.9})
         bottom: 0;
         right: 0;
         left: 0;
-        background-color: #fff;
+        background-color: rgba(0,0,0,.9);
         z-index: 1;
         opacity: 0;
         transition: none;

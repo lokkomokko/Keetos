@@ -136,7 +136,7 @@ export default {
         background-color: #a4a4a4;   
         left: 0;
         right: 0;
-        bottom: 4px;
+        bottom: 6px;
       }
       &:first-of-type {
         &:after {

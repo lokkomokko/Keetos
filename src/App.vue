@@ -141,7 +141,9 @@ export default {
       //     $('html, body').animate({
       //     scrollTop: 0
       // }, 700);
-    this.transitionName = to.name === 'project' ? 'slide-right' : 'v'
+    this.transitionName = to.name === 'project' || from.name === 'project' ? 'slide-right' : 'v'
+    window.scrollTime = from.name === 'project' ? 0 : 500
+    
 
        const w1 = document.querySelector('.w1'), 
         w2 = document.querySelector('.w2'),
@@ -158,7 +160,6 @@ export default {
       else {
         this.menu_icon.classList.remove('artclose--blue')
       }    
-      console.log(32323);     
     }, 600)   
     }
   }

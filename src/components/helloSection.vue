@@ -40,7 +40,7 @@ export default {
   mounted: function() {
     $(".scroll").click(function() {
       var block_height = $(".hello_section").height(); 
-      console.log(block_height)
+      
         $('html, body').animate({
             scrollTop: block_height
         }, 700);
