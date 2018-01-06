@@ -9,6 +9,9 @@
 				<p class="big-text-section__desc">
 					We are a digital production studio specializing in web design, creation of responsive web projects and branding.
 				</p>
+				<p class="d-text__1 d-text__mobile">
+					Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work.						
+				</p>				
 				<a class="big-text-section__link big-text-section__link--border" href="">
 					See our projects
 				</a>
@@ -24,11 +27,16 @@
 		<div class="big-text-section__center-wrapper">
 			<div class="big-text-section__left-side
 			big-text-section__center-wrapper--top-align">
-				<p class="big-text-section__left-text">
-					Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work. 
-					<br><br>
-					We learn from the client as much information about its business and its target audience to correct accents and bring in the desired project the whole soul of the company and create a product that brings a new level of sales.				
-				</p>
+				<div class="big-text-section__left-text">
+					<p class="d-text__1">
+						Our studio is focused on small, medium and large businesses as well as public services. Among our clients — companies, each of which is a leader in its industry. A major part of our work is the constant communication with the customer at every stage of the work.						
+					</p> 
+					<br>
+					<p class="d-text__2">
+						We learn from the client as much information about its business and its target audience to correct accents and bring in the desired project the whole soul of the company and create a product that brings a new level of sales.	
+					</p>
+									
+				</div>
 			</div>
 			<div class="big-text-section__right-side">
 				<div class="big-text-section__right-wrap-services
@@ -63,16 +71,12 @@
 		<div class="slides-block__right-side">
 			<a href='' class="slides-block__item"><img src="../assets/img/ab2.png" alt=""></a>
 			<a href='' class="slides-block__item"><img src="../assets/img/ab3.png" alt=""></a>
-			<a href='' class="slides-block__item slides-block__item--wide"><img src="../assets/img/3b8a603507428c1b7af4b80e981f75f9--photography-minimal-symmetry-photography.png" alt=""></a>			
+			<a href="0" data-old-href="0" class="slides-block__item slides-block__item--wide"><img src="../assets/img/3b8a603507428c1b7af4b80e981f75f9--photography-minimal-symmetry-photography.png" alt=""></a>			
 		</div>
 	</div>
 
 	<div class="big-text-section big-text-section--low w3">
-		<div class="big-text-section__left-side">
-			<p class="big-text-section__left-text">
-				What makes us different? We really love what we do, and enjoy the process of creating each project with a soul.				
-			</p>
-		</div>
+
 		<div class="big-text-section__right-side">
 			<a href="" class="big-text-section__link big-text-section__link--arrow">
 				<span class="big-text-section__link-arrow ">
@@ -108,7 +112,7 @@ export default {
 
   data: function() {
   	return {
-  		// arrow_blue: render_svg(arrow_blue)
+  		// hrefLastItem: ''
   	}
   },
   mounted() {
@@ -122,6 +126,19 @@ export default {
           CapitolTriangles.triangles.start()    
     }  	
     
+
+
+	        $(document).on('mouseenter', '.big-text-section__link--arrow', function(e) {
+	        	console.log(e)
+	          anim.arrow_anim_start(e)
+	        })
+
+	        $(document).on('mouseleave', '.big-text-section__link--arrow', function(e) {
+	          anim.arrow_anim_finish(e)
+	        })	        
+
+
+	        if ($(window).width() > 650) {
   		var controller = new ScrollMagic.Controller();
   		const paralax_img = document.querySelector('.paralax img')
   		const paralax = document.querySelector('.paralax')
@@ -133,81 +150,21 @@ export default {
                   triggerHook: 1
                   })
                
-              // .addIndicators()
               .setTween(TweenMax.to(paralax_img, 1, {y: '90%', ease:Power0.easeNone}))
-              // .setClassToggle(item, 'web-item__image-back--fade')
 
-              .addTo(controller);    
-
-	        document.querySelector('.big-text-section__link--arrow ').addEventListener('mouseenter', (e) => {
-	          anim.arrow_anim_start(e)
-
-	        })
-	        document.querySelector('.big-text-section__link--arrow ').addEventListener('mouseleave', (e) => {
-
-	          anim.arrow_anim_finish(e)
-	          
-	        })    	
+              .addTo(controller);    	        	
+	        	var last_slide = $('.slides-block__item').last() 
+		        last_slide.addClass('slides-block__item--see-all') 	
+		        last_slide.append($('.big-text-section__link--arrow').clone())
+	        }
+	        // else {
+	        	// $('.hello_section, .big-text-section').height(screen.height)
+	        // }
   }
 
 }
 
 </script>
 
-<style lang="scss">
-
-	@import "../assets/css/elements/settings.scss";
-
-
-
-	.big-image {
-		width: 100%;
-	    height: 41.6vmax;
-	    overflow: hidden;
-		img {
-			@extend %img;
-		}
-	}
-	.paralax {
-		img {
-			// transition: .01s;
-			will-change: transform;
-			position: relative;
-			top: -30vmax;
-			height: calc(100% + 20vmax);	
-		}
-	}
-	.slides-block {
-		
-		width: 100%;
-		display: flex;
-		&__left-side, &__right-side {
-			flex-basis: 50%;
-			display: flex;
-			flex-wrap: wrap;	
-		}
-		&__item {
-			height: 21vmax;
-			flex-basis: 50%;
-			cursor: pointer;
-			overflow: hidden;
-			&--wide {
-				flex-basis: 100%;		
-			}
-			&:hover {
-				img {
-					transform: scale(1);
-				}
-			}
-		}
-		img {
-			transform: scale(1.1);
-			transition: 0.7s;
-			will-change: transform;
-			@extend %img;
-			
-		}
-	}
-</style>
 
 

@@ -10,7 +10,9 @@ import VueImg from 'v-img';
 var VueScrollTo = require('vue-scrollto');
 import vueScrollBehavior from 'vue-scroll-behavior'
 import ScrollToPlugin from "gsap/ScrollToPlugin";
-
+// import "babel-polyfill";
+// require("babel-polyfill");
+// require('polyfills')
 
 // Using vueScrollBehavior 
 // Vue.use(vueScrollBehavior, {

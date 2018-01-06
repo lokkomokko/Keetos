@@ -10,13 +10,15 @@ export default {
   name: 'canvas_bg',
   
   mounted: function() {
-	console.log('я родился')
-		CapitolTriangles.triangles = new CapitolTriangles();
+	// console.log('я родился')
+		if ($(window).width() > 640) {
+			CapitolTriangles.triangles = new CapitolTriangles();
 
-		$('.bgCanvas').html(CapitolTriangles.triangles.el);
+			$('.bgCanvas').html(CapitolTriangles.triangles.el);
 
-		CapitolTriangles.triangles.start()
-		 CapitolTriangles.triangles.resize();
+			CapitolTriangles.triangles.start()
+			 CapitolTriangles.triangles.resize();			
+		}
 
 		 // window.onscroll = function() {
 

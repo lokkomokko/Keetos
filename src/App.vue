@@ -1,6 +1,8 @@
 <template>
   <div id="app" class="wrapper">
-
+<!--       <div class="preloader">
+        <img src="static/img/loadnew2.gif" height="72" width="341" alt="">
+      </div> -->
       <canvas_bg></canvas_bg>  
       <menuTemplate></menuTemplate>
       <transition :name="transitionName">
@@ -17,10 +19,10 @@
 
   </div>
 </template>
-
 <script>
 import render_svg from './assets/js/render_svg.js'
 
+// require('assets/js/polifill.js')
 
 import arrow_up from './assets/img/arrow.svg'
 import menuTemplate from './components/menu.vue'
@@ -63,6 +65,17 @@ export default {
   },
   mounted: function() {
     
+    $(document).ready(function() {  
+
+    // site preloader -- also uncomment the div in the header and the css style for #preloader
+    $(window).on('load', function(){
+      $('.preloader').fadeOut('slow',function(){$(this).remove();});
+    });
+
+    });
+    // setTimeout(function () {
+    //   $('.preloader').remove()
+    // }, 1000)    
     // window.savedScrolldisign = 123
     this.menu_icon = document.querySelector('.artclose');
 
@@ -79,7 +92,7 @@ export default {
 
           $('.bgCanvas').addClass('pause')
             CapitolTriangles.triangles.pause()
-            console.log('я умер')
+            // console.log('я умер')
         
           }
          }      
@@ -88,7 +101,7 @@ export default {
 
           $('.bgCanvas').removeClass('pause')
             CapitolTriangles.triangles.start()
-            console.log('я родился снова(')
+            // console.log('я родился снова(')
         
           }          
 

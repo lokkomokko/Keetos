@@ -27,6 +27,9 @@
             <div class="lang">
               <a href="#"></a>
             </div>
+            <div class="lang">
+              <a href="#">RU</a>
+            </div>            
           </div>
         </div>
   

@@ -11,7 +11,8 @@
     <!-- Add to home screen for Android and modern mobile browsers -->
     <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
     <meta name="theme-color" content="#4DBA87">
-
+    <!-- Script for polyfilling Promises on IE9 and 10 -->
+    <script src='https://cdn.polyfill.io/v2/polyfill.min.js'></script>
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -29,6 +30,37 @@
     <noscript>
       This is your fallback content in case JavaScript fails to load.
     </noscript>
+    <style>
+        .preloader {
+    z-index: 10000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100vh;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-color: #fff; 
+}
+@media screen and (max-width: 640px) {
+    .preloader img {
+            max-width: 197px;
+            height: auto;
+            margin-top: -28px;
+    }
+}
+    </style>
+          <div class="preloader">
+        <img src="static/img/loadnew2.gif" height="72" width="341" alt="">
+      </div>
     <div id="app"></div>
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>

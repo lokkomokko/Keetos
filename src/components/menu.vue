@@ -11,7 +11,7 @@
 			<router-link class="home-link" to="/">
 				<div class="logo" v-html="logo"></div>
 			</router-link>
-			
+			<a href="" class="mobile-lang">ru</a>
 			<nav>
 				<ul>
 					<li class="menu_link"><router-link :to="{ name: 'root' }">About</router-link></li>
@@ -27,7 +27,16 @@
 				<a class="title" href="">contact us</a>
 			</div>
 			
-			<a class="mail" href="mailto:contact@keetos.ru">contact@keetos.ru</a>			
+			<div class="mail-wrapper">
+				<a class="mail" href="mailto:contact@keetos.ru">contact@keetos.ru</a>
+		      <div class="mobile-header-social__wrapper">
+		        <a href="" class="footer__social-item"><span v-html="vk"></span></a>
+		        <a href="" class="footer__social-item fb"><span v-html="fb"></span></a>
+		        <a href="" class="footer__social-item inst"><span v-html="inst"></span></a>
+		        <a href="" class="footer__social-item"><span v-html="be"></span></a>
+		      </div>				
+			</div>
+
 		</div>
 
 	</div>	
@@ -35,8 +44,12 @@
 
 <script>
 
+import render_svg from '../assets/js/render_svg.js'
 import logo from '../assets/img/logo_for_menu.svg';
-
+import vk from '../assets/img/004-vk-social-network-logo.svg'
+import fb from '../assets/img/005-facebook-logo.svg'
+import inst from '../assets/img/001-instagram-logo.svg'
+import be from '../assets/img/003-behance-logo.svg'
 
 const rendered = `
 <svg viewBox="${logo.viewBox}">
@@ -47,7 +60,11 @@ export default {
   name: 'menuTemplate',
   data() {
   	return {
-      logo: rendered
+      logo: rendered,
+      vk: render_svg(vk),
+      fb: render_svg(fb),
+      inst: render_svg(inst),
+      be: render_svg(be),      
   	}
   },
   mounted: function() {
@@ -134,184 +151,3 @@ var menuScript = function() {
 
 </script>
 
-<style scoped lang="scss">
-
-	@import "../assets/css/elements/settings.scss";
-
-  .menu {
-    .artclose {
-      position: fixed;
-      left: 4rem;
-      top: 3.7rem;
-      cursor: pointer;
-      width: 50px;
-      height: 34px;
-      z-index: 30;
-      transition: .3s; 
-      
-      &:hover {
-        opacity: .7;
-      }
-
-    }
-    .nav_wrap {
-      position: fixed;
-      z-index: 20;
-      bottom: 0;
-      left: 0;
-      top: 0;
-      background-color: #fff;
-      display: flex;
-      max-height: 100vh;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 8rem 0 3.9em;
-      box-shadow: 30px 0 128px rgba(0, 0, 0, 0.14);
-      max-width: 50%;
-      width: 100%;
-      transform: translateX(-57vw);
-      transition: .5s all;
-        &.open {
-          transform: translateX(0);
-        }
-        ul {
-        display: flex;
-        flex-direction: column;
-        }
-        .logo {
-          width: 105px;
-          height: 22px;
-          position: absolute;
-          right: 4rem;
-          top: 3.8rem;
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-      nav {
-        // margin-top: 13.4rem;
-      }
-      .menu_link {
-        padding: 0 7.5rem;
-        position: relative;
-        margin-bottom: 0.4em;		
-        line-height: 3.6875rem;
-        &:last-of-type {
-          margin-bottom: 0;  
-        }
-        &:hover {
-          &:before {
-            transform: scaleX(1)
-          }
-        }
-        &:before {
-          content: '';
-          transition: .3s;
-          height: 1px;
-          background-color: $blue;
-          width: 4.3rem;
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: scaleX(0);
-          transform-origin: 0;
-          
-        }       
-      }
-      .contact_block {
-        display: flex;
-        flex-direction: column;
-        margin-left: 7.5rem;
-        p {
-          font-family: Gilroy;
-          font-size: 0.866667rem;
-          color: #939393;
-          font-style: italic;
-          margin-bottom: 10px;
-        }
-        .title {
-          font-family: GilroyBold;
-          color: #424242;
-          text-transform: uppercase;
-          font-size: 1.86667rem;
-          transition: .3s;
-          &:hover {
-            opacity: .7;
-          } 
-        }
-      }
-      .mail {
-        color: $blue;
-        text-decoration: underline;
-        font-family: GilroyBold;
-        font-size: 1rem;
-        margin-left: 7.5rem;
-        transition: .3s;
-        &:hover {
-          opacity: .7;
-        }         
-
-      }   
-      .separator {
-        background-color: #e6e6e7;
-        height: 1px;
-        width: 38px;
-        margin-left: 7.5rem;
-        margin-top: -0.4rem;
-      } 
-    }
-  }
-
-
-.artclose {
-height: 30px;
-  width: 33px;
-  cursor: pointer;
-  &--blue {
-    .burgx, .burgx2, .burgx3 {
-      background-color: $blue !important;
-    }
-  }
-}
-
-.burgx, .burgx2, .burgx3 {
-  margin-top: 3px;
-  background: #fff;
-  width: 28px;
-  height: 3px;
-  position: absolute;
-  transition: 0.2s;
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg);
-  -moz-transform: rotate(-180deg);
-  -o-transform: rotate(-180deg);
-}
-.burgx {
-  width: 21px;
-  margin-top: 20px;
-
-}
-.burgx2 {
- margin-top: 11.3px;
-}
-.burgx3 {
-  margin-top: 3px;   
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-}
-.menu_link {
-  color: $blue;
-  font-family: GilroyBold;
-  font-size: 3.33333rem;
-  display: inline-block;
-  a {
-
-    &:hover {
-      animation: animate_menu_link .5s;
-    }   
-  }
-}	
-</style>

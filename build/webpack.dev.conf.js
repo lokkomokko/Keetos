@@ -8,6 +8,8 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
@@ -44,7 +46,16 @@ module.exports = merge(baseWebpackConfig, {
       Delaunay :"delaunay-fast",
       ImprovedNoise :"improved-noise"
     }),
-
+    new BrowserSyncPlugin({
+      // browse to http://localhost:3000/ during development,
+      // ./public directory is being served
+      host: 'localhost',
+      port: 3000,
+      proxy: 'localhost:8080',
+    }, {
+      reload: false,
+      name: 'portfolio',
+    }),
 
   ]
 })
