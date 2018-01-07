@@ -71,7 +71,7 @@ export default {
     // $(window).on('load', function(){
       $('.preloader').fadeOut('slow',function(){$(this).remove();});
     // });
-
+// $('.preloader').hide()
     // });
     // setTimeout(function () {
     //   $('.preloader').remove()
