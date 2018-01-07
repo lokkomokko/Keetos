@@ -24,6 +24,18 @@
         for (var file of chunk.files) {
           if (file.match(/\.(js|css)$/)) { %>
     <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+
+
+<meta property="og:title" content="Keetos"/>
+
+<meta property="og:description" content="Web design & branding"/>
+
+<meta property="og:image" content="/static/img/og.png" />
+
+<meta property="og:type" content="article"/>
+
+<meta property="og:url" content="https://keetos.ru" />
+
   </head>
   <body>
     <noscript>
